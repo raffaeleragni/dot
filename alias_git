@@ -1,4 +1,6 @@
 alias gt='git tag '
+alias gd='git diff '
+alias gdc='git diff --cached '
 alias gb='git branch '
 alias gco='git checkout '
 alias gp='git push '
