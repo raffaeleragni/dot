@@ -11,8 +11,10 @@ alias gpu='git pull '
 alias gl='git log '
 alias gst='git status '
 alias gadd='git add '
-alias gcam='git commit -S --amend --no-edit'
+alias gcam='git commit --amend --no-edit'
+alias gcams='git commit -S --amend --no-edit'
 alias grpo='git remote prune origin '
+alias gpdot='cd ~/.dot; git pull; cd -'
 
 gcm() {
   git commit -m"$*"
