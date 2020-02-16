@@ -4,6 +4,11 @@ k() {
   kubectl $*
 }
 
+ka() {
+  kubectl --all-namespaces $*
+}
+
+
 kc() {
   if [ ! -z "$1" ] ; then
     kubectl config use-context $1
