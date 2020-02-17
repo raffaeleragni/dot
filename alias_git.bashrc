@@ -1,11 +1,11 @@
 #!/bin/bash
 
+alias g='git'
+__git_complete g _git
+
 alias gt='git tag '
 alias gd='git diff '
 alias gdc='git diff --cached '
-alias gb='git branch '
-alias gco='git checkout '
-alias gp='git push '
 alias gpt='git push --tags '
 alias gpu='git pull '
 alias gl='git log '
@@ -15,6 +15,15 @@ alias gcam='git commit --amend --no-edit'
 alias gcams='git commit -S --amend --no-edit'
 alias grpo='git remote prune origin '
 alias gpdot='cd ~/.dot; git pull; cd -'
+
+alias gb='git branch '
+__git_complete gb _git_branch
+
+alias gco='git checkout '
+__git_complete gco _git_checkout
+
+alias gp='git push '
+__git_complete gp git_push
 
 gcm() {
   git commit -m"$*"
