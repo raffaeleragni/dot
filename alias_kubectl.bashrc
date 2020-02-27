@@ -20,7 +20,7 @@ kw() {
 
   local session="kiwi_${1}"
 
-  local FILTERS=${FILTERS:="$*"}
+  local FILTERS="$*"
   local CMD_HPA="kubectl get hpa ${FILTERS}"
   local CMD_PODS="kubectl get pods ${FILTERS} | grep -v Running | grep -v Completed"
   local CMD_DEPLOYMENTS="kubectl get deployments ${FILTERS}"
