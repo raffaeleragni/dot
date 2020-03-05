@@ -32,3 +32,10 @@ gcm() {
 gcms() {
   git commit -S -m"$*"
 }
+
+gsync() {
+  for i in `ls`; do
+    cd $i && git checkout master && git pull
+    cd -
+  done
+}
