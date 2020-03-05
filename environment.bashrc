@@ -11,6 +11,8 @@ PATH="$HOME/bin:$PATH"
 
 if [ -d "$DOTDIR/bin" ] ; then
   for i in `ls "$DOTDIR/bin"`; do
-    ln -s "$DOTDIR/bin/$i" "$HOME/bin/$i"
+    if [ ! -x "$HOME/bin/$i" ]; then
+      ln -s "$DOTDIR/bin/$i" "$HOME/bin/$i"
+    fi
   done
 fi
