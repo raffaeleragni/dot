@@ -25,6 +25,12 @@ __git_complete gco _git_checkout
 alias gp='git push '
 __git_complete gp git_push
 
+gpa() {
+  for i in `git remote`; do
+    git push $i $*
+  done
+}
+
 gcm() {
   git commit -m"$*"
 }
