@@ -14,7 +14,7 @@ alias gadd='git add '
 alias gcam='git commit --amend --no-edit'
 alias gcams='git commit -S --amend --no-edit'
 alias grpo='git remote prune origin '
-alias gpdot='cd ~/.dot; git pull; cd -'
+alias gpudot='cd ~/.dot; git pull; cd -'
 
 alias gb='git branch '
 __git_complete gb _git_branch
