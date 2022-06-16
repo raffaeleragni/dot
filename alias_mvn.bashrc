@@ -1,3 +1,4 @@
 #!/bin/bash
 
-alias mcc='./mvnw clean install sonar:sonar'
+alias mcc='./mvnw -T 3C clean install sonar:sonar'
+
