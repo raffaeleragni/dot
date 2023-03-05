@@ -20,6 +20,8 @@ return require('packer').startup(function(use)
     end
   }
 
+  use ({'nvim-treesitter/nvim-treesitter', {run = ":TSUpdate"}})
+
   use {
     'VonHeikemen/lsp-zero.nvim',
     branch = 'v1.x',

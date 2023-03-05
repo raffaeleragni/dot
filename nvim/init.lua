@@ -12,6 +12,16 @@ vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
 local telescope = require('telescope.builtin')
 vim.keymap.set("n", "<leader>pf", telescope.find_files)
 
+require'nvim-treesitter.configs'.setup {
+  ensure_installed = { "c", "lua", "vim", "help", "query", "rust", "javascript", "typescript" },
+  sync_install = false,
+  auto_install = true,
+  highlight = {
+    enable = true,
+    additional_vim_regex_highlighting = false,
+  },
+}
+
 local lsp = require('lsp-zero').preset({
   name = 'minimal',
   set_lsp_keymaps = true,
@@ -23,5 +33,7 @@ lsp.ensure_installed({
   'rust_analyzer'
 })
 
-require('lspconfig').lua_ls.setup {}
+require('lspconfig').lua_ls.setup({})
+require('rust-tools').setup({})
+
 
