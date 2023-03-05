@@ -1,3 +1,6 @@
+xterm*font:             *-fixed-*-*-*-18-*
+xterm*facename:         DejaVu Sans Mono:pixelsize=18
+
 #define S_base03        #002b36
 #define S_base02        #073642
 #define S_base01        #586e75
