@@ -28,12 +28,9 @@ local lsp = require('lsp-zero').preset({
   manage_nvim_cmp = true,
   suggest_lsp_servers = false,
 })
-lsp.preset('recommended')
-lsp.ensure_installed({
-  'rust_analyzer'
-})
+lsp.setup_servers({'eslint', 'tsserver', 'rust_analyzer'})
+lsp.nvim_workspace()
+lsp.setup()
 
-require('lspconfig').lua_ls.setup({})
 require('rust-tools').setup({})
-
 
