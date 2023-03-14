@@ -30,6 +30,15 @@ local lsp = require('lsp-zero').preset {
 }
 lsp.setup()
 
+vim.diagnostic.config({
+  virtual_text = true,
+  signs = true,
+  update_in_insert = false,
+  underline = true,
+  severity_sort = false,
+  float = true,
+})
+
 lsp.setup_servers {'eslint', 'tsserver', 'rust_analyzer'}
 lsp.nvim_workspace()
 
