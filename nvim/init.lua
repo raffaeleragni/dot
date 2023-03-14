@@ -9,6 +9,11 @@ vim.opt.hlsearch = false
 vim.g.mapleader = " "
 vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
 
+vim.keymap.set("n", "<leader>tn", vim.cmd.tabnew)
+vim.keymap.set("n", "<leader>tc", vim.cmd.tabclose)
+vim.keymap.set("n", "<leader>[", vim.cmd.tabprev)
+vim.keymap.set("n", "<leader>]", vim.cmd.tabnext)
+
 local telescope = require('telescope.builtin')
 vim.keymap.set("n", "<leader>pf", telescope.find_files)
 
