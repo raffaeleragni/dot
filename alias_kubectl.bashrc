@@ -8,6 +8,12 @@ ka() {
   kubectl --all-namespaces $*
 }
 
+kn() {
+  if [ ! -z "$1" ] ; then
+    kubectl set-context --current --namespace=$1
+  fi
+  kubectl config view --minify | grep namespace:
+}
 
 kc() {
   if [ ! -z "$1" ] ; then
