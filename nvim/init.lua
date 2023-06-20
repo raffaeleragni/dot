@@ -9,6 +9,12 @@ vim.opt.hlsearch = false
 vim.g.mapleader = " "
 vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
 
+vim.keymap.set("n", "<leader>cc", function() vim.cmd('!cargo clippy') end)
+vim.keymap.set("n", "<leader>cf", function() vim.cmd('!cargo fmt') end)
+vim.keymap.set("n", "<leader>cb", function() vim.cmd('!cargo build') end)
+vim.keymap.set("n", "<leader>ct", function() vim.cmd('!cargo test') end)
+vim.keymap.set("n", "<leader>cr", function() vim.cmd('!cargo run') end)
+
 vim.keymap.set("n", "<leader>tn", vim.cmd.tabnew)
 vim.keymap.set("n", "<leader>tc", vim.cmd.tabclose)
 vim.keymap.set("n", "<leader>[", vim.cmd.tabprev)
@@ -18,7 +24,7 @@ local telescope = require('telescope.builtin')
 vim.keymap.set("n", "<leader>pf", telescope.find_files)
 
 require('nvim-treesitter.configs').setup {
-  ensure_installed = { "c", "lua", "vim", "help", "query", "rust", "javascript", "typescript" },
+  ensure_installed = { "lua", "vim", "help", "query", "rust" },
   sync_install = false,
   auto_install = true,
   highlight = {
@@ -44,7 +50,7 @@ vim.diagnostic.config({
   float = true,
 })
 
-lsp.setup_servers {'eslint', 'tsserver', 'rust_analyzer'}
+lsp.setup_servers {'rust_analyzer'}
 lsp.nvim_workspace()
 
 require('rust-tools').setup({})
