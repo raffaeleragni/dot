@@ -10,7 +10,7 @@ ka() {
 
 kn() {
   if [ ! -z "$1" ] ; then
-    kubectl set-context --current --namespace=$1
+    kubectl config set-context --current --namespace=$1
   fi
   kubectl config view --minify | grep namespace:
 }
