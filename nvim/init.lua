@@ -24,7 +24,7 @@ local telescope = require('telescope.builtin')
 vim.keymap.set("n", "<leader>pf", telescope.find_files)
 
 require('nvim-treesitter.configs').setup {
-  ensure_installed = { "lua", "vim", "help", "query", "rust" },
+  ensure_installed = { "lua", "vim", "rust" },
   sync_install = false,
   auto_install = true,
   highlight = {
