@@ -1,4 +1,6 @@
 #!/bin/bash
 
-#export CARGO_TARGET_DIR=~/.cargo/global-target
-#mkdir -p $CARGO_TARGET_DIR
+if [ -z "`which rustc`" ]; then
+  curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+fi
+
