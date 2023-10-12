@@ -7,21 +7,14 @@ vim.opt.incsearch = true
 vim.opt.hlsearch = false
 
 vim.g.mapleader = " "
-vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
-
-vim.keymap.set("n", "<leader>cc", function() vim.cmd('!cargo clippy') end)
-vim.keymap.set("n", "<leader>cf", function() vim.cmd('!cargo fmt') end)
-vim.keymap.set("n", "<leader>cb", function() vim.cmd('!cargo build') end)
-vim.keymap.set("n", "<leader>ct", function() vim.cmd('!cargo test') end)
-vim.keymap.set("n", "<leader>cr", function() vim.cmd('!cargo run') end)
-
-vim.keymap.set("n", "<leader>tn", vim.cmd.tabnew)
-vim.keymap.set("n", "<leader>tc", vim.cmd.tabclose)
-vim.keymap.set("n", "<leader>[", vim.cmd.tabprev)
-vim.keymap.set("n", "<leader>]", vim.cmd.tabnext)
+vim.keymap.set("n", "<C-e>", vim.cmd.Ex)
+vim.keymap.set("n", "<C-t>", vim.cmd.tabnew)
+vim.keymap.set("n", "<C-w>", vim.cmd.tabclose)
+vim.keymap.set("n", "<C-[>", vim.cmd.tabprev)
+vim.keymap.set("n", "<C-]>", vim.cmd.tabnext)
 
 local telescope = require('telescope.builtin')
-vim.keymap.set("n", "<leader>pf", telescope.find_files)
+vim.keymap.set("n", "<C-f>", telescope.find_files)
 
 require('nvim-treesitter.configs').setup {
   ensure_installed = { "lua", "vim", "rust" },
@@ -55,6 +48,7 @@ lsp.nvim_workspace()
 
 require('rust-tools').setup({})
 
-vim.keymap.set("n", "<leader>r", vim.lsp.buf.rename)
-vim.keymap.set("n", "<leader><CR>", vim.lsp.buf.code_action)
+vim.keymap.set("n", "<C-r>", vim.lsp.buf.rename)
+vim.keymap.set("i", "<C-Space>", vim.lsp.buf.completion)
+vim.keymap.set("n", "<A-CR>", vim.lsp.buf.code_action)
 
