@@ -1,20 +1,20 @@
 vim.opt.nu = true
-vim.opt.tabstop = 2
-vim.opt.softtabstop = 2
-vim.opt.shiftwidth = 2
+--vim.opt.relativenumber = true
+vim.opt.tabstop = 4
+vim.opt.softtabstop = 4
+vim.opt.shiftwidth = 4
 vim.opt.expandtab = true
+vim.opt.smartindent = true
+vim.opt.wrap = false
 vim.opt.incsearch = true
 vim.opt.hlsearch = false
+vim.opt.scrolloff = 10
+vim.opt.updatetime = 50
+vim.opt.colorcolumn = "120"
 
 vim.g.mapleader = " "
-vim.keymap.set("n", "<C-e>", vim.cmd.Ex)
-vim.keymap.set("n", "<C-t>", vim.cmd.tabnew)
-vim.keymap.set("n", "<C-w>", vim.cmd.tabclose)
-vim.keymap.set("n", "<C-[>", vim.cmd.tabprev)
-vim.keymap.set("n", "<C-]>", vim.cmd.tabnext)
 
 local telescope = require('telescope.builtin')
-vim.keymap.set("n", "<C-f>", telescope.find_files)
 
 require('nvim-treesitter.configs').setup {
   ensure_installed = { "lua", "vim", "rust" },
@@ -26,29 +26,30 @@ require('nvim-treesitter.configs').setup {
   },
 }
 
-local lsp = require('lsp-zero').preset {
-  name = 'minimal',
-  set_lsp_keymaps = true,
-  manage_nvim_cmp = true,
-  suggest_lsp_servers = false,
-}
-lsp.setup()
+require('lsp-zero').setup()
+require('rust-tools').setup()
 
 vim.diagnostic.config({
-  virtual_text = true,
-  signs = true,
-  update_in_insert = false,
-  underline = true,
-  severity_sort = false,
-  float = true,
+  virtual_text = {
+    prefix = 'x',
+  },
+  severity_sort = true,
+  float = {
+    source = "always",
+  },
 })
-
-lsp.setup_servers {'rust_analyzer'}
-lsp.nvim_workspace()
-
-require('rust-tools').setup({})
-
+vim.keymap.set('n', '<leader>do', vim.diagnostic.open_float)
+vim.keymap.set('n', '<leader>d[', vim.diagnostic.goto_prev)
+vim.keymap.set('n', '<leader>d]', vim.diagnostic.goto_next)
+vim.keymap.set('n', '<C-s>', ':w<CR>')
+vim.keymap.set('i', '<C-s>', '<Esc>:w<CR>a')
+vim.keymap.set('n', '<C-f>', vim.lsp.buf.format)
+vim.keymap.set("n", "<C-e>", vim.cmd.Ex)
+vim.keymap.set("n", "<C-t>", vim.cmd.tabnew)
+vim.keymap.set("n", "<C-w>", vim.cmd.tabclose)
+vim.keymap.set("n", "<C-[>", vim.cmd.tabprev)
+vim.keymap.set("n", "<C-]>", vim.cmd.tabnext)
+vim.keymap.set("n", "<C-g>", telescope.find_files)
 vim.keymap.set("n", "<C-r>", vim.lsp.buf.rename)
-vim.keymap.set("i", "<C-Space>", vim.lsp.buf.completion)
-vim.keymap.set("n", "<A-CR>", vim.lsp.buf.code_action)
+vim.keymap.set("n", "<leader><cr>", vim.lsp.buf.code_action)
 
