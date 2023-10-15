@@ -67,11 +67,7 @@ vim.diagnostic.config({
     source = "always",
   },
 })
-vim.keymap.set('n', '<leader>do', vim.diagnostic.open_float)
-vim.keymap.set('n', '<leader>d[', vim.diagnostic.goto_prev)
-vim.keymap.set('n', '<leader>d]', vim.diagnostic.goto_next)
 vim.keymap.set('n', '<C-s>', ':w<CR>')
-vim.keymap.set('i', '<C-s>', '<Esc>:w<CR>a')
 vim.keymap.set('n', '<C-f>', vim.lsp.buf.format)
 vim.keymap.set("n", "<C-e>", vim.cmd.Ex)
 vim.keymap.set("n", "<C-t>", vim.cmd.tabnew)
@@ -81,4 +77,5 @@ vim.keymap.set("n", "<C-]>", vim.cmd.tabnext)
 vim.keymap.set("n", "<C-g>", telescope.find_files)
 vim.keymap.set("n", "<C-r>", vim.lsp.buf.rename)
 vim.keymap.set("n", "<leader><cr>", vim.lsp.buf.code_action)
+vim.keymap.set('n', '<leader>d', vim.diagnostic.open_float)
 
