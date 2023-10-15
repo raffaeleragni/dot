@@ -5,3 +5,7 @@ if [ -z "`which rustc`" ]; then
   rustup component add rust-analyzer
 fi
 
+if [ ! -z "`which mold`" ]; then
+  export RUSTFLAGS="-C linker=clang -C link-arg=-fuse-ld=/usr/bin/mold"
+fi
+
