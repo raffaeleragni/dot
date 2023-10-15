@@ -11,10 +11,13 @@ vim.opt.hlsearch = false
 vim.opt.scrolloff = 10
 vim.opt.updatetime = 50
 vim.opt.colorcolumn = "120"
+vim.opt.termguicolors = true
 
 vim.g.mapleader = " "
 
 local telescope = require('telescope.builtin')
+
+require('nvim-tree').setup()
 
 require('nvim-treesitter.configs').setup {
   ensure_installed = { "lua", "vim", "rust" },
@@ -67,6 +70,7 @@ vim.diagnostic.config({
     source = "always",
   },
 })
+vim.keymap.set('n', '<C-x>', ':NvimTreeOpen<CR>')
 vim.keymap.set('n', '<C-s>', ':w<CR>')
 vim.keymap.set('n', '<C-f>', vim.lsp.buf.format)
 vim.keymap.set("n", "<C-e>", vim.cmd.Ex)
