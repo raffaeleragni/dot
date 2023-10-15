@@ -26,7 +26,36 @@ require('nvim-treesitter.configs').setup {
   },
 }
 
-require('lsp-zero').setup()
+
+local lsp = require('lsp-zero').preset({})
+
+lsp.on_attach(function(client, bufnr)
+  lsp.default_keymaps({buffer = bufnr})
+end)
+
+lsp.setup()
+
+local cmp = require('cmp')
+local cmp_action = lsp.cmp_action()
+
+cmp.setup({
+    sources = {
+        {name = 'nvim_lsp'},
+        {name = 'buffer'},
+        {name = 'luasnip'},
+    },
+    mapping = {
+        ['<CR>'] = cmp.mapping.confirm({select = false}),
+        ['<Tab>'] = cmp_action.luasnip_supertab(),
+        ['<S-Tab>'] = cmp_action.luasnip_shift_supertab(),
+        ['<C-Space>'] = cmp.mapping.complete(),
+    },
+    window = {
+        completion = cmp.config.window.bordered(),
+        documentation = cmp.config.window.bordered(),
+    },
+})
+
 require('rust-tools').setup()
 
 vim.diagnostic.config({
