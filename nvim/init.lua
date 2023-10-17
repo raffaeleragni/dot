@@ -76,7 +76,6 @@ vim.diagnostic.config({
     source = "always",
   },
 })
-vim.keymap.set('n', '<C-x>', ':NvimTreeOpen<CR>')
 vim.keymap.set('n', '<C-s>', ':w<CR>')
 vim.keymap.set('i', '<C-s>', '<esc>:w<CR>')
 vim.keymap.set('n', '<C-f>', vim.lsp.buf.format)
