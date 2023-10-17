@@ -6,6 +6,6 @@ if [ -z "`which rustc`" ]; then
 fi
 
 if [ ! -z "`which mold`" ]; then
-  export RUSTFLAGS="-C linker=clang -C link-arg=-fuse-ld=/usr/bin/mold"
+  export RUSTFLAGS="$RUSTFLAGS -C linker=clang -C link-arg=-fuse-ld=/usr/bin/mold"
 fi
 
