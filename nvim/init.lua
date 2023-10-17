@@ -59,6 +59,14 @@ cmp.setup({
 
 require('rust-tools').setup()
 
+require('neotest').setup({
+    adapters = {
+        require('neotest-rust') {
+            dap_adapter = "lldb",
+        }
+    }
+})
+
 vim.diagnostic.config({
   virtual_text = {
     prefix = 'x',
@@ -81,8 +89,9 @@ vim.keymap.set("n", "<C-g>", telescope.find_files)
 vim.keymap.set("n", "<C-r>", vim.lsp.buf.rename)
 vim.keymap.set("n", "<leader><cr>", vim.lsp.buf.code_action)
 vim.keymap.set('n', '<leader>d', vim.diagnostic.open_float)
-vim.keymap.set('n', '<leader>ta', ':TestSuite<CR>')
-vim.keymap.set('n', '<leader>tf', ':TestFile<CR>')
-vim.keymap.set('n', '<leader>tt', ':TestNearest<CR>')
-vim.keymap.set('n', '<leader>tl', ':TestLast<CR>')
+vim.keymap.set('n', '<leader>td', function() require('neotest').run.run({strategy = "dap"}) end)
+vim.keymap.set('n', '<leader>tf', function() require('neotest').run.run(vim.fn.expand("%")) end)
+vim.keymap.set('n', '<leader>ta', function() require('neotest').run.run(vim.fn.getcwd()) end)
+vim.keymap.set('n', '<leader>tt', function() require('neotest').run.run() end)
+vim.keymap.set('n', '<leader>to', function() require('neotest').output.open({enter = true, short = true}) end)
 
