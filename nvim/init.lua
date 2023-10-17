@@ -92,5 +92,5 @@ vim.keymap.set('n', '<leader>td', function() require('neotest').run.run({strateg
 vim.keymap.set('n', '<leader>tf', function() require('neotest').run.run(vim.fn.expand("%")) end)
 vim.keymap.set('n', '<leader>ta', function() require('neotest').run.run(vim.fn.getcwd()) end)
 vim.keymap.set('n', '<leader>tt', function() require('neotest').run.run() end)
-vim.keymap.set('n', '<leader>to', function() require('neotest').output.open({enter = true, short = true}) end)
+vim.keymap.set('n', '<leader>to', function() require('neotest').output.open({enter = true}) end)
 
