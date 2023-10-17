@@ -6,9 +6,6 @@ vim.cmd [[packadd packer.nvim]]
 return require('packer').startup(function(use)
   use 'wbthomason/packer.nvim'
 
-  use 'nvim-tree/nvim-tree.lua'
-  use 'nvim-tree/nvim-web-devicons'
-
   use {
     'nvim-telescope/telescope.nvim', tag = '0.1.4',
     requires = { {'nvim-lua/plenary.nvim'} }
@@ -47,6 +44,13 @@ return require('packer').startup(function(use)
       {'rafamadriz/friendly-snippets'}, -- Optional
       {'simrat39/rust-tools.nvim'},
     }
+  }
+
+  use {
+    "klen/nvim-test",
+    config = function()
+      require('nvim-test').setup()
+    end
   }
 
   use {

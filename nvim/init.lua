@@ -17,8 +17,6 @@ vim.g.mapleader = " "
 
 local telescope = require('telescope.builtin')
 
-require('nvim-tree').setup()
-
 require('nvim-treesitter.configs').setup {
   ensure_installed = { "lua", "vim", "rust" },
   sync_install = false,
@@ -83,4 +81,8 @@ vim.keymap.set("n", "<C-g>", telescope.find_files)
 vim.keymap.set("n", "<C-r>", vim.lsp.buf.rename)
 vim.keymap.set("n", "<leader><cr>", vim.lsp.buf.code_action)
 vim.keymap.set('n', '<leader>d', vim.diagnostic.open_float)
+vim.keymap.set('n', '<leader>ta', ':TestSuite<CR>')
+vim.keymap.set('n', '<leader>tf', ':TestFile<CR>')
+vim.keymap.set('n', '<leader>tt', ':TestNearest<CR>')
+vim.keymap.set('n', '<leader>tl', ':TestLast<CR>')
 
