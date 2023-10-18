@@ -1,5 +1,7 @@
-xterm*font:             *-fixed-*-*-*-18-*
-xterm*facename:         DejaVu Sans Mono:pixelsize=18
+URxvt.font: xft:DejaVuSansM Nerd Font Mono:size=18
+
+XTerm*faceName: DejaVuSansM Nerd Font Mono
+XTerm*faceSize: 18
 
 ! special
 *.foreground:   #e0def4
