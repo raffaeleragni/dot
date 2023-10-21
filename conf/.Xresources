@@ -1,7 +1,7 @@
-URxvt.font: xft:DejaVuSansM Nerd Font Mono:size=18
+URxvt.font: xft:DejaVuSansM Nerd Font Mono:size=24
 
 XTerm*faceName: DejaVuSansM Nerd Font Mono
-XTerm*faceSize: 18
+XTerm*faceSize: 24
 
 ! special
 *.foreground:   #e0def4
