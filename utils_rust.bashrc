@@ -1,8 +1,16 @@
 #!/bin/bash
 
+cargoenv () {
+  if [ -f "$HOME/.cargo/env" ]; then
+    source "$HOME/.cargo/env"
+  fi
+}
+
+cargoenv
+
 if [ -z "`which rustc`" ]; then
   curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-  source "$HOME/.cargo/env"
+  cargoenv
   rustup component add rust-analyzer
 fi
 
