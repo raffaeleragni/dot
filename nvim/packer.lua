@@ -24,6 +24,8 @@ return require('packer').startup(function(use)
 
     use {'nvim-treesitter/nvim-treesitter', run = ":TSUpdate"}
 
+    use {'folke/noice.nvim', requires = {{"MunifTanjim/nui.nvim"}}}
+
     use {
         'VonHeikemen/lsp-zero.nvim',
         branch = 'v2.x',
@@ -46,6 +48,17 @@ return require('packer').startup(function(use)
             {'rafamadriz/friendly-snippets'}, -- Optional
             {'simrat39/rust-tools.nvim'},
         }
+    }
+    use {
+      "folke/lsp-trouble.nvim",
+      requires = "kyazdani42/nvim-web-devicons",
+      config = function()
+        require("trouble").setup {
+          -- your configuration comes here
+          -- or leave it empty to use the default settings
+          -- refer to the configuration section below
+        }
+      end
     }
 
     use {
