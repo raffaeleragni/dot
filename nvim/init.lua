@@ -69,6 +69,7 @@ require('neotest').setup({
     }
 })
 
+
 vim.diagnostic.config({
   virtual_text = {
     prefix = 'x',
@@ -81,7 +82,7 @@ vim.diagnostic.config({
 vim.keymap.set('n', '<C-s>', ':w<CR>')
 vim.keymap.set('i', '<C-s>', '<esc>:w<CR>')
 vim.keymap.set('n', '<C-f>', vim.lsp.buf.format)
-vim.keymap.set("n", "<C-e>", vim.cmd.Ex)
+vim.keymap.set("n", "<C-e>", ':Neotree toggle<CR>')
 vim.keymap.set("n", "<C-t>", vim.cmd.tabnew)
 vim.keymap.set("n", "<C-w>", ':q<CR>')
 vim.keymap.set("n", "<C-[>", vim.cmd.tabprev)
