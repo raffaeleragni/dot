@@ -79,6 +79,12 @@ vim.diagnostic.config({
     source = "always",
   },
 })
+
+vim.keymap.set('n', '<C-Left>', '<C-w><Left>',{noremap = true, silent = false})
+vim.keymap.set('n', '<C-Right>', '<C-w><Right>',{noremap = true, silent = false})
+vim.keymap.set('n', '<C-Up>', '<C-w><Up>',{noremap = true, silent = false})
+vim.keymap.set('n', '<C-Down>', '<C-w><Down>',{noremap = true, silent = false})
+vim.keymap.set('n', '<C-s>', ':w<CR>')
 vim.keymap.set('n', '<C-s>', ':w<CR>')
 vim.keymap.set('i', '<C-s>', '<esc>:w<CR>')
 vim.keymap.set('n', '<C-f>', vim.lsp.buf.format)
