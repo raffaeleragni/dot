@@ -49,6 +49,11 @@ return require('packer').startup(function(use)
           enable_git_status = true,
           enable_diagnostics = true,
           enable_git_status = true,
+          filesystem = {
+            filtered_items= {
+              visible = true
+            }
+          },
           default_component_configs = {
             container = {
               enable_character_fade = true
