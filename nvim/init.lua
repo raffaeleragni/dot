@@ -59,7 +59,17 @@ cmp.setup({
     },
 })
 
-require('rust-tools').setup()
+require('rust-tools').setup({
+    server = {
+        settings = {
+            ["rust-analyzer"] = {
+                checkOnSave = {
+                    command = "clippy"
+                }
+            }
+        }
+    }
+})
 
 require('neotest').setup({
     adapters = {
