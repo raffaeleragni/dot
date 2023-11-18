@@ -65,6 +65,10 @@ require('rust-tools').setup({
             ["rust-analyzer"] = {
                 checkOnSave = {
                     command = "clippy"
+                },
+                check = {
+                    command = "clippy",
+                    extraArgs = { "--all", "--", "-W", "clippy::all" },
                 }
             }
         }
