@@ -1,6 +1,3 @@
--- This file can be loaded by calling `lua require('plugins')` from your init.vim
-
--- Only required if you have packer configured as `opt`
 vim.cmd [[packadd packer.nvim]]
 
 return require('packer').startup(function(use)
@@ -25,7 +22,7 @@ return require('packer').startup(function(use)
     use {'nvim-treesitter/nvim-treesitter', run = ":TSUpdate"}
 
     use {'folke/noice.nvim', requires = {{"MunifTanjim/nui.nvim"}}}
-     
+    
     use {
       "nvim-neo-tree/neo-tree.nvim",
       branch = "v3.x",

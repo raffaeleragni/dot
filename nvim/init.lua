@@ -13,7 +13,7 @@ vim.opt.updatetime = 50
 vim.opt.colorcolumn = "120"
 vim.opt.termguicolors = true
 
-vim.g.mapleader = " "
+vim.g.mapleader = ""
 
 local telescope = require('telescope.builtin')
 
@@ -109,9 +109,10 @@ vim.keymap.set("n", "<C-[>", vim.cmd.tabprev)
 vim.keymap.set("n", "<C-]>", vim.cmd.tabnext)
 vim.keymap.set("n", "<C-g>", telescope.find_files)
 vim.keymap.set("n", "<C-r>", vim.lsp.buf.rename)
+vim.keymap.set("n", "<C-x>", vim.lsp.buf.code_action, {noremap=true})
+vim.keymap.set("v", "<C-x>", vim.lsp.buf.code_action, {noremap=true})
 vim.keymap.set("n", "<leader><cr>", vim.lsp.buf.code_action)
 vim.keymap.set('n', '<leader>d', vim.diagnostic.open_float)
-vim.keymap.set('n', '<leader>td', function() require('neotest').run.run({strategy = "dap"}) end)
 vim.keymap.set('n', '<leader>tf', function() require('neotest').run.run(vim.fn.expand("%")) end)
 vim.keymap.set('n', '<leader>ta', function() require('neotest').run.run(vim.fn.getcwd()) end)
 vim.keymap.set('n', '<leader>tt', function() require('neotest').run.run() end)
