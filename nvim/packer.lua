@@ -147,6 +147,9 @@ return require('packer').startup(function(use)
       end
     }
 
+    use { 'williamboman/nvim-lsp-installer' }
+    use { 'mfussenegger/nvim-jdtls' }
+
     use {
         "nvim-neotest/neotest",
         requires = {
