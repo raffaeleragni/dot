@@ -14,26 +14,17 @@ end
 
 local get_lombok_javaagent = function()
   local lombok_dir = home_dir..'/.m2/repository/org/projectlombok/lombok/'
-  local lombok_versions = io.popen('ls -1 "' .. lombok_dir .. '" | sort -r')
+  local lombok_versions = io.popen('ls -1 "' .. lombok_dir .. '" | sort -r | head -n1')
   if lombok_versions ~= nil then
-    local lb_i, lb_versions = 0, {}
-    for lb_version in lombok_versions:lines() do
-      lb_i = lb_i + 1
-      lb_versions[lb_i] = lb_version
-    end
+    version = lombok_versions:read()
     lombok_versions:close()
-    if next(lb_versions) ~= nil then
-      local lombok_jar = fn.expand(string.format('%s%s/*.jar', lombok_dir, lb_versions[1]))
-      if file_exist(lombok_jar) then
-        return string.format('--jvm-arg=-javaagent:%s', lombok_jar)
-      end
+    local lombok_jar = fn.expand(string.format('%s%s/lombok-%s.jar', lombok_dir, version, version))
+    if file_exist(lombok_jar) then
+      return string.format('--jvm-arg=-javaagent:%s', lombok_jar)
     end
   end
   return ''
 end
-
-local get_launcher = function()
-  end
 
 local get_cmd = function()
   local cmd = {
