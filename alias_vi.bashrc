@@ -5,7 +5,7 @@ if [ ! -z "`which vim`" ]; then
     if [ ! -z "`which nvim`" ]; then
         alias vim=nvim
     fi
-    if [ -f "~/bin/nvim" ]; then
+    if [ -f "$HOME/bin/nvim" ]; then
         alias vim=nvim
     fi
 fi
