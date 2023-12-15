@@ -133,6 +133,7 @@ return require('packer').startup(function(use)
             {'L3MON4D3/LuaSnip'},             -- Required
             {'rafamadriz/friendly-snippets'}, -- Optional
             {'simrat39/rust-tools.nvim'},
+            {'mfussenegger/nvim-dap'},
         }
     }
     use {
