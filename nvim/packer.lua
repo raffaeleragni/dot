@@ -162,6 +162,16 @@ return require('packer').startup(function(use)
     }
 
     use 'tpope/vim-fugitive'
+    use {
+        "smoka7/multicursors.nvim",
+        requires = {
+            "smoka7/hydra.nvim",
+        },
+        config = function()
+            require('multicursors').setup {
+            }
+        end
+    }
 
 end)
 
