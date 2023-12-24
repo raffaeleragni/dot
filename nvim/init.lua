@@ -143,6 +143,13 @@ vim.diagnostic.config({
     },
 })
 
+require('lspconfig').gopls.setup({
+  gopls_cmd = vim.fn.expand('$GOPATH/go/gopls'),
+  fillstruct = 'gopls',
+  dap_debug = true,
+  dap_debug_gui = true
+})
+
 vim.keymap.set('n', 'U', ':redo<cr>')
 vim.keymap.set('n', '<C-Left>', '<C-w><Left>', { noremap = true, silent = false })
 vim.keymap.set('n', '<C-Right>', '<C-w><Right>', { noremap = true, silent = false })
