@@ -7,7 +7,7 @@ return require('packer').startup(function(use)
 
     use {
         'nvim-telescope/telescope.nvim', tag = '0.1.4',
-        requires = { {'nvim-lua/plenary.nvim'} }
+        requires = { { 'nvim-lua/plenary.nvim' } }
     }
 
     use {
@@ -19,35 +19,41 @@ return require('packer').startup(function(use)
         end
     }
 
-    use {'nvim-treesitter/nvim-treesitter', run = ":TSUpdate"}
+    use { 'nvim-treesitter/nvim-treesitter', run = ":TSUpdate" }
 
-    use {'folke/noice.nvim', requires = {{"MunifTanjim/nui.nvim"}}}
+    use {
+        'folke/noice.nvim',
+        requires = {
+            "MunifTanjim/nui.nvim",
+            "rcarriga/nvim-notify"
+        }
+    }
 
     use {
         "nvim-neo-tree/neo-tree.nvim",
         branch = "v3.x",
-        requires = { 
+        requires = {
             "nvim-lua/plenary.nvim",
             "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
             "MunifTanjim/nui.nvim",
-            "3rd/image.nvim", -- Optional image support in preview window: See `# Preview Mode` for more information
+            "3rd/image.nvim",              -- Optional image support in preview window: See `# Preview Mode` for more information
         },
-        config = function ()
+        config = function()
             vim.fn.sign_define("DiagnosticSignError",
-            {text = " ", texthl = "DiagnosticSignError"})
+                { text = " ", texthl = "DiagnosticSignError" })
             vim.fn.sign_define("DiagnosticSignWarn",
-            {text = " ", texthl = "DiagnosticSignWarn"})
+                { text = " ", texthl = "DiagnosticSignWarn" })
             vim.fn.sign_define("DiagnosticSignInfo",
-            {text = " ", texthl = "DiagnosticSignInfo"})
+                { text = " ", texthl = "DiagnosticSignInfo" })
             vim.fn.sign_define("DiagnosticSignHint",
-            {text = "󰌵", texthl = "DiagnosticSignHint"})        
+                { text = "󰌵", texthl = "DiagnosticSignHint" })
 
             require("neo-tree").setup({
                 enable_git_status = true,
                 enable_diagnostics = true,
                 enable_git_status = true,
                 filesystem = {
-                    filtered_items= {
+                    filtered_items = {
                         visible = true
                     }
                 },
@@ -92,8 +98,8 @@ return require('packer').startup(function(use)
                             -- Change type
                             added     = "", -- or "✚", but this is redundant info if you use git_status_colors on the name
                             modified  = "", -- or "", but this is redundant info if you use git_status_colors on the name
-                            deleted   = "✖",-- this can only be used in the git_status source
-                            renamed   = "󰁕",-- this can only be used in the git_status source
+                            deleted   = "✖", -- this can only be used in the git_status source
+                            renamed   = "󰁕", -- this can only be used in the git_status source
                             -- Status type
                             untracked = "",
                             ignored   = "",
@@ -108,7 +114,6 @@ return require('packer').startup(function(use)
                     width = 25,
                 }
             })
-
         end
     }
 
@@ -117,23 +122,23 @@ return require('packer').startup(function(use)
         branch = 'v2.x',
         requires = {
             -- LSP Support
-            {'neovim/nvim-lspconfig'},             -- Required
-            {'williamboman/mason.nvim'},           -- Optional
-            {'williamboman/mason-lspconfig.nvim'}, -- Optional
+            { 'neovim/nvim-lspconfig' },           -- Required
+            { 'williamboman/mason.nvim' },         -- Optional
+            { 'williamboman/mason-lspconfig.nvim' }, -- Optional
 
             -- Autocompletion
-            {'hrsh7th/nvim-cmp'},         -- Required
-            {'hrsh7th/cmp-buffer'},       -- Optional
-            {'hrsh7th/cmp-path'},         -- Optional
-            {'saadparwaiz1/cmp_luasnip'}, -- Optional
-            {'hrsh7th/cmp-nvim-lsp'},     -- Required
-            {'hrsh7th/cmp-nvim-lua'},     -- Optional
+            { 'hrsh7th/nvim-cmp' },       -- Required
+            { 'hrsh7th/cmp-buffer' },     -- Optional
+            { 'hrsh7th/cmp-path' },       -- Optional
+            { 'saadparwaiz1/cmp_luasnip' }, -- Optional
+            { 'hrsh7th/cmp-nvim-lsp' },   -- Required
+            { 'hrsh7th/cmp-nvim-lua' },   -- Optional
 
             -- Snippets
-            {'L3MON4D3/LuaSnip'},             -- Required
-            {'rafamadriz/friendly-snippets'}, -- Optional
-            {'simrat39/rust-tools.nvim'},
-            {'mfussenegger/nvim-dap'},
+            { 'L3MON4D3/LuaSnip' },           -- Required
+            { 'rafamadriz/friendly-snippets' }, -- Optional
+            { 'simrat39/rust-tools.nvim' },
+            { 'mfussenegger/nvim-dap' },
         }
     }
     use {
@@ -186,6 +191,4 @@ return require('packer').startup(function(use)
             }
         end
     }
-
 end)
-
