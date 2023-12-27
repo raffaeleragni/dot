@@ -26,7 +26,10 @@ return require('packer').startup(function(use)
         requires = {
             "MunifTanjim/nui.nvim",
             "rcarriga/nvim-notify"
-        }
+        },
+        config = function()
+            require("noice").setup()
+        end
     }
 
     use {

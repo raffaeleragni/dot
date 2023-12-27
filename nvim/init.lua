@@ -27,9 +27,6 @@ require('nvim-treesitter.configs').setup {
     },
 }
 
-
-require("noice").setup()
-
 local lsp = require('lsp-zero').preset({})
 
 lsp.on_attach(function(client, bufnr)
