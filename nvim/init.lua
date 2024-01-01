@@ -179,6 +179,7 @@ vim.keymap.set('n', '<leader>ta', function() require('neotest').run.run(vim.fn.g
 vim.keymap.set('n', '<leader>tt', function() require('neotest').run.run() end)
 vim.keymap.set('n', '<leader>td', function() require('neotest').run.run({ stragegy = "dap" }) end)
 vim.keymap.set('n', '<leader>to', function() require('neotest').output.open({ enter = true }) end)
+vim.keymap.set('n', '<leader>tr', ':Trouble<cr>')
 vim.keymap.set('n', '<C-b>', function() require('dap').toggle_breakpoint() end)
 vim.keymap.set('n', '<F5>', function() require('dap').continue() end)
 vim.keymap.set('n', '<F6>', function() require('dap').repl.open() end)
