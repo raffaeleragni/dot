@@ -6,7 +6,7 @@ return require('packer').startup(function(use)
     use 'tpope/vim-unimpaired'
     use 'ryanoasis/vim-devicons'
     use {
-        'nvim-telescope/telescope.nvim', tag = '0.1.4',
+        'nvim-telescope/telescope.nvim',
         requires = { { 'nvim-lua/plenary.nvim' } }
     }
     use {
