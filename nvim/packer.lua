@@ -103,6 +103,7 @@ return require('packer').startup(function(use)
             { 'rafamadriz/friendly-snippets' }, -- Optional
             { 'simrat39/rust-tools.nvim' },
             { 'mfussenegger/nvim-dap' },
+            { 'rcarriga/nvim-dap-ui' },
         }
     }
     use {
@@ -126,6 +127,7 @@ return require('packer').startup(function(use)
             "antoinemadec/FixCursorHold.nvim",
             "rouge8/neotest-rust",
             "mfussenegger/nvim-dap",
+            "rcarriga/nvim-dap-ui",
         }
     }
     use 'tpope/vim-fugitive'
@@ -149,6 +151,15 @@ return require('packer').startup(function(use)
         config = function()
             require("go").setup {
             }
+        end
+    }
+    use {
+        "rcarriga/nvim-dap-ui",
+        requires = {
+            "mfussenegger/nvim-dap"
+        },
+        config = function()
+            require("dapui").setup()
         end
     }
 end)
