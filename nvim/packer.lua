@@ -17,7 +17,21 @@ return require('packer').startup(function(use)
             vim.cmd('colorscheme rose-pine')
         end
     }
-    use { 'nvim-treesitter/nvim-treesitter', run = ":TSUpdate" }
+    use {
+        'nvim-treesitter/nvim-treesitter',
+        run = ":TSUpdate",
+        config = function()
+            require('nvim-treesitter.configs').setup {
+                ensure_installed = { "lua", "vim", "rust" },
+                sync_install = false,
+                auto_install = true,
+                highlight = {
+                    enable = true,
+                    additional_vim_regex_highlighting = false,
+                },
+            }
+        end
+    }
     use {
         'folke/noice.nvim',
         requires = {
@@ -103,7 +117,37 @@ return require('packer').startup(function(use)
             { 'rafamadriz/friendly-snippets' },      -- Optional
             { 'mfussenegger/nvim-dap' },
             { 'rcarriga/nvim-dap-ui' },
-        }
+        },
+        config = function()
+            local lsp = require('lsp-zero').preset({})
+
+            lsp.on_attach(function(client, bufnr)
+                lsp.default_keymaps({ buffer = bufnr })
+            end)
+
+            lsp.setup()
+            local cmp = require('cmp')
+            local cmp_action = lsp.cmp_action()
+
+            cmp.setup({
+                reload_workspace_from_cargo_toml = true,
+                sources = {
+                    { name = 'nvim_lsp' },
+                    { name = 'buffer' },
+                    { name = 'luasnip' },
+                },
+                mapping = {
+                    ['<CR>'] = cmp.mapping.confirm({ select = false }),
+                    ['<Tab>'] = cmp_action.luasnip_supertab(),
+                    ['<S-Tab>'] = cmp_action.luasnip_shift_supertab(),
+                    ['<C-Space>'] = cmp.mapping.complete(),
+                },
+                window = {
+                    completion = cmp.config.window.bordered(),
+                    documentation = cmp.config.window.bordered(),
+                },
+            })
+        end
     }
     use {
         'mrcjkb/rustaceanvim',
@@ -170,7 +214,16 @@ return require('packer').startup(function(use)
             "rouge8/neotest-rust",
             "mfussenegger/nvim-dap",
             "rcarriga/nvim-dap-ui",
-        }
+        },
+        config = function()
+            require('neotest').setup({
+                adapters = {
+                    require('neotest-rust') {
+                        dap_adapter = "lldb",
+                    }
+                }
+            })
+        end
     }
     use 'tpope/vim-fugitive'
     use {
@@ -193,6 +246,12 @@ return require('packer').startup(function(use)
         config = function()
             require("go").setup {
             }
+            require('lspconfig').gopls.setup({
+                gopls_cmd = vim.fn.expand('$GOPATH/go/gopls'),
+                fillstruct = 'gopls',
+                dap_debug = true,
+                dap_debug_gui = true
+            })
         end
     }
     use {
@@ -215,6 +274,39 @@ return require('packer').startup(function(use)
             dap.listeners.before.event_exited.dapui_config = function()
                 dapui.close()
             end
+            dap.adapters.lldb = {
+                type = 'server',
+                port = "${port}",
+                executable = {
+                    command = '/usr/bin/lldb-vscode',
+                    args = { "--port", "${port}" },
+                }
+            }
+
+            dap.configurations.rust = {
+                {
+                    name = "Rust debug",
+                    type = "lldb",
+                    request = "launch",
+                    program = function()
+                        vim.fn.jobstart('cargo build')
+                        return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/target/debug/', 'file')
+                    end,
+                    cwd = '${workspaceFolder}',
+                    stopOnEntry = true,
+                    showDisassembly = "never",
+                },
+            }
+
+
+            dap.adapters.codelldb = {
+                type = 'server',
+                port = '${port}',
+                executable = {
+                    command = vim.fn.expand('$HOME/.local/share/nvim/mason/packages/codelldb/codelldb'),
+                    args = { '--port', '${port}' },
+                },
+            }
         end
     }
 end)
