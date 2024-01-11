@@ -92,15 +92,15 @@ return require('packer').startup(function(use)
             { 'williamboman/mason.nvim' },           -- Optional
             { 'williamboman/mason-lspconfig.nvim' }, -- Optional
             -- Autocompletion
-            { 'hrsh7th/nvim-cmp' },         -- Required
-            { 'hrsh7th/cmp-buffer' },       -- Optional
-            { 'hrsh7th/cmp-path' },         -- Optional
-            { 'saadparwaiz1/cmp_luasnip' }, -- Optional
-            { 'hrsh7th/cmp-nvim-lsp' },     -- Required
-            { 'hrsh7th/cmp-nvim-lua' },     -- Optional
+            { 'hrsh7th/nvim-cmp' },                  -- Required
+            { 'hrsh7th/cmp-buffer' },                -- Optional
+            { 'hrsh7th/cmp-path' },                  -- Optional
+            { 'saadparwaiz1/cmp_luasnip' },          -- Optional
+            { 'hrsh7th/cmp-nvim-lsp' },              -- Required
+            { 'hrsh7th/cmp-nvim-lua' },              -- Optional
             -- Snippets
-            { 'L3MON4D3/LuaSnip' },             -- Required
-            { 'rafamadriz/friendly-snippets' }, -- Optional
+            { 'L3MON4D3/LuaSnip' },                  -- Required
+            { 'rafamadriz/friendly-snippets' },      -- Optional
             { 'simrat39/rust-tools.nvim' },
             { 'mfussenegger/nvim-dap' },
             { 'rcarriga/nvim-dap-ui' },
@@ -159,7 +159,20 @@ return require('packer').startup(function(use)
             "mfussenegger/nvim-dap"
         },
         config = function()
-            require("dapui").setup()
+            local dap, dapui = require("dap"), require("dapui")
+            dapui.setup()
+            dap.listeners.before.attach.dapui_config = function()
+                dapui.open()
+            end
+            dap.listeners.before.launch.dapui_config = function()
+                dapui.open()
+            end
+            dap.listeners.before.event_terminated.dapui_config = function()
+                dapui.close()
+            end
+            dap.listeners.before.event_exited.dapui_config = function()
+                dapui.close()
+            end
         end
     }
 end)
