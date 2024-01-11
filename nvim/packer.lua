@@ -101,11 +101,16 @@ return require('packer').startup(function(use)
             -- Snippets
             { 'L3MON4D3/LuaSnip' },                  -- Required
             { 'rafamadriz/friendly-snippets' },      -- Optional
-            { 'simrat39/rust-tools.nvim' },
             { 'mfussenegger/nvim-dap' },
             { 'rcarriga/nvim-dap-ui' },
         }
     }
+    use {
+        'mrcjkb/rustaceanvim',
+        config = function()
+        end
+    }
+
     use {
         "folke/lsp-trouble.nvim",
         requires = "kyazdani42/nvim-web-devicons",
