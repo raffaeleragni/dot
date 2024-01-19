@@ -127,6 +127,7 @@ return require('packer').startup(function(use)
 
             lsp.setup()
             local cmp = require('cmp')
+            cmp.setup {}
             local cmp_action = lsp.cmp_action()
 
             cmp.setup({
