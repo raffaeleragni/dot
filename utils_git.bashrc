@@ -1,7 +1,7 @@
 #!/bin/bash
 
 gmerged() {
-    BRANCH=git rev-parse --abbrev-ref HEAD
+    BRANCH=`git rev-parse --abbrev-ref HEAD`
     MASTER=master
     if [ `git rev-parse --verify main 2>/dev/null` ]; then
         MASTER=main
