@@ -177,11 +177,12 @@ return require('packer').startup(function(use)
                             },
                             procMacro = {
                                 enable = true,
-                                --ignored = {
+                                ignored = {
+                                    leptops_macro = {"component", "server"}
                                 --    ["async-trait"] = { "async_trait" },
                                 --    ["napi-derive"] = { "napi" },
                                 --    ["async-recursion"] = { "async_recursion" },
-                                --},
+                                },
                             },
                         },
                     },

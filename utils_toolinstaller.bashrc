@@ -14,7 +14,7 @@ if [ ! -f "$BINDIR/kubectl" ]; then
 fi
 
 if [ ! -f "$BINDIR/helm" ]; then
-    TMP=`mktemp -p -t`
+    TMP=`mktemp -d -t`
     cd $TMP
     curl -LO "https://get.helm.sh/helm-v3.14.1-linux-amd64.tar.gz"
     tar xzf helm-v3.14.1-linux-amd64.tar.gz
@@ -24,7 +24,7 @@ if [ ! -f "$BINDIR/helm" ]; then
 fi
 
 if [ ! -f "$BINDIR/terraform" ]; then
-    TMP=`mktemp -p -t`
+    TMP=`mktemp -d -t`
     cd $TMP
     curl -LO "https://releases.hashicorp.com/terraform/1.7.3/terraform_1.7.3_linux_amd64.zip"
     unzip terraform_1.7.3_linux_amd64.zip
