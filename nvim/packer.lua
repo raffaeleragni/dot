@@ -8,6 +8,7 @@ return require('packer').startup(function(use)
     use 'tpope/vim-commentary'
     use 'ryanoasis/vim-devicons'
     use 'folke/todo-comments.nvim'
+    use 'folke/neodev.nvim'
     use {
         "folke/which-key.nvim",
         config = function()
