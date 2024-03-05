@@ -4,6 +4,7 @@ return require('packer').startup(function(use)
     use 'wbthomason/packer.nvim'
     use 'tpope/vim-repeat'
     use 'tpope/vim-unimpaired'
+    use 'tpope/vim-commentary'
     use 'ryanoasis/vim-devicons'
     use {
         "folke/which-key.nvim",
