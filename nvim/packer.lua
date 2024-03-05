@@ -6,6 +6,18 @@ return require('packer').startup(function(use)
     use 'tpope/vim-unimpaired'
     use 'ryanoasis/vim-devicons'
     use {
+        "folke/which-key.nvim",
+        config = function()
+            vim.o.timeout = true
+            vim.o.timeoutlen = 300
+            require("which-key").setup {
+                -- your configuration comes here
+                -- or leave it empty to use the default settings
+                -- refer to the configuration section below
+            }
+        end
+    }
+    use {
         'nvim-telescope/telescope.nvim',
         requires = { { 'nvim-lua/plenary.nvim' } }
     }
@@ -178,10 +190,10 @@ return require('packer').startup(function(use)
                             procMacro = {
                                 enable = true,
                                 ignored = {
-                                    leptops_macro = {"component", "server"}
-                                --    ["async-trait"] = { "async_trait" },
-                                --    ["napi-derive"] = { "napi" },
-                                --    ["async-recursion"] = { "async_recursion" },
+                                    leptops_macro = { "component", "server" }
+                                    --    ["async-trait"] = { "async_trait" },
+                                    --    ["napi-derive"] = { "napi" },
+                                    --    ["async-recursion"] = { "async_recursion" },
                                 },
                             },
                         },
