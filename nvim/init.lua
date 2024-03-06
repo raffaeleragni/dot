@@ -79,7 +79,6 @@ end
 vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({
     'nvim-lua/plenary.nvim',
-    'wbthomason/packer.nvim',
     'tpope/vim-repeat',
     'tpope/vim-unimpaired',
     'tpope/vim-commentary',
