@@ -220,7 +220,6 @@ require("lazy").setup({
 
             lsp.setup()
             local cmp = require('cmp')
-            cmp.setup {}
             local cmp_action = lsp.cmp_action()
 
             cmp.setup({
@@ -235,6 +234,10 @@ require("lazy").setup({
                     ['<Tab>'] = cmp_action.luasnip_supertab(),
                     ['<S-Tab>'] = cmp_action.luasnip_shift_supertab(),
                     ['<C-Space>'] = cmp.mapping.complete(),
+                    ['<PageUp>'] = cmp.mapping.scroll_docs(-4),
+                    ['<PageDown>'] = cmp.mapping.scroll_docs(4),
+                    ['<C-u>'] = cmp.mapping.scroll_docs(-4),
+                    ['<C-d>'] = cmp.mapping.scroll_docs(4),
                 },
                 window = {
                     completion = cmp.config.window.bordered(),

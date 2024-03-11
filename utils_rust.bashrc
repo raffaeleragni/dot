@@ -18,3 +18,4 @@ if [ ! -z "`which mold`" ]; then
   export RUSTFLAGS="$RUSTFLAGS -C linker=clang -C link-arg=-fuse-ld=/usr/bin/mold"
 fi
 
+export CARGO_TARGET_DIR=$HOME/.cargo-target
