@@ -83,9 +83,12 @@ require("lazy").setup({
     'nvim-lua/plenary.nvim',
     'tpope/vim-commentary',
     'ryanoasis/vim-devicons',
-    'nvim-telescope/telescope.nvim',
     'williamboman/nvim-lsp-installer',
     'mfussenegger/nvim-jdtls',
+    {
+        'nvim-telescope/telescope.nvim',
+        dependencies = { 'sharkdp/fd' }
+    },
     {
         'rose-pine/neovim',
         config = function()
@@ -235,6 +238,7 @@ require("lazy").setup({
     },
     {
         'mrcjkb/rustaceanvim',
+        version = '^4',
         config = function()
             vim.g.rustaceanvim = {
                 server = {
@@ -262,7 +266,6 @@ require("lazy").setup({
     },
     {
         "folke/lsp-trouble.nvim",
-        dependencies = "kyazdani42/nvim-web-devicons",
         config = function()
             require("trouble").setup()
         end
