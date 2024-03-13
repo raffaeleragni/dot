@@ -81,33 +81,24 @@ end
 vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({
     'nvim-lua/plenary.nvim',
-    'tpope/vim-repeat',
-    'tpope/vim-unimpaired',
     'tpope/vim-commentary',
     'ryanoasis/vim-devicons',
-    'folke/todo-comments.nvim',
-    'folke/neodev.nvim',
-    'tpope/vim-fugitive',
     'nvim-telescope/telescope.nvim',
     'williamboman/nvim-lsp-installer',
     'mfussenegger/nvim-jdtls',
+    {
+        'rose-pine/neovim',
+        config = function()
+            require('rose-pine').setup()
+            vim.cmd("colorscheme rose-pine")
+        end
+    },
     {
         "folke/which-key.nvim",
         config = function()
             vim.o.timeout = true
             vim.o.timeoutlen = 300
-            require("which-key").setup {
-                -- your configuration comes here
-                -- or leave it empty to use the default settings
-                -- refer to the configuration section below
-            }
-        end
-    },
-    {
-        'rose-pine/neovim',
-        config = function()
-            require('rose-pine').setup()
-            vim.cmd('colorscheme rose-pine')
+            require("which-key").setup()
         end
     },
     {
@@ -147,20 +138,18 @@ require("lazy").setup({
                     view = "cmdline",
                 },
                 lsp = {
-                    -- override markdown rendering so that **cmp** and other plugins use **Treesitter**
                     override = {
                         ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
                         ["vim.lsp.util.stylize_markdown"] = true,
                         ["cmp.entry.get_documentation"] = true,
                     },
                 },
-                -- you can enable a preset for easier configuration
                 presets = {
-                    bottom_search = true,         -- use a classic bottom cmdline for search
-                    command_palette = true,       -- position the cmdline and popupmenu together
-                    long_message_to_split = true, -- long messages will be sent to a split
-                    inc_rename = false,           -- enables an input dialog for inc-rename.nvim
-                    lsp_doc_border = false,       -- add a border to hover docs and signature help
+                    bottom_search = true,
+                    command_palette = true,
+                    long_message_to_split = true,
+                    inc_rename = false,
+                    lsp_doc_border = false,
                 },
             })
         end
@@ -170,9 +159,9 @@ require("lazy").setup({
         branch = "v3.x",
         dependencies = {
             "nvim-lua/plenary.nvim",
-            "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
+            "nvim-tree/nvim-web-devicons",
             "MunifTanjim/nui.nvim",
-            "3rd/image.nvim",              -- Optional image support in preview window: See `# Preview Mode` for more information
+            "3rd/image.nvim",
         },
         config = function()
             require("neo-tree").setup({
@@ -185,7 +174,7 @@ require("lazy").setup({
                 },
                 window = {
                     position = "left",
-                    width = 25,
+                    width = 30,
                 }
             })
         end
@@ -208,8 +197,6 @@ require("lazy").setup({
             -- Snippets
             { 'L3MON4D3/LuaSnip' },                  -- Required
             { 'rafamadriz/friendly-snippets' },      -- Optional
-            { 'mfussenegger/nvim-dap' },
-            { 'rcarriga/nvim-dap-ui' },
         },
         config = function()
             local lsp = require('lsp-zero').preset({})
@@ -250,24 +237,14 @@ require("lazy").setup({
         'mrcjkb/rustaceanvim',
         config = function()
             vim.g.rustaceanvim = {
-                -- Plugin configuration
-                tools = {
-                },
-                -- LSP configuration
                 server = {
-                    on_attach = function(client, bufnr)
-                        -- you can also put keymaps in here
-                    end,
                     settings = {
-                        -- rust-analyzer language server configuration
                         ['rust-analyzer'] = {
                             cargo = {
-                                --allFeatures = true,
                                 loadOutDirsFromCheck = true,
                                 runBuildScripts = true,
                             },
                             checkOnSave = {
-                                --allFeatures = true,
                                 command = "clippy",
                                 extraArgs = { "--no-deps" },
                             },
@@ -275,16 +252,10 @@ require("lazy").setup({
                                 enable = true,
                                 ignored = {
                                     leptops_macro = { "component", "server" }
-                                    --    ["async-trait"] = { "async_trait" },
-                                    --    ["napi-derive"] = { "napi" },
-                                    --    ["async-recursion"] = { "async_recursion" },
                                 },
                             },
                         },
                     },
-                },
-                -- DAP configuration
-                dap = {
                 },
             }
         end
@@ -293,11 +264,7 @@ require("lazy").setup({
         "folke/lsp-trouble.nvim",
         dependencies = "kyazdani42/nvim-web-devicons",
         config = function()
-            require("trouble").setup {
-                -- your configuration comes here
-                -- or leave it empty to use the default settings
-                -- refer to the configuration section below
-            }
+            require("trouble").setup()
         end
     },
     {
@@ -321,16 +288,6 @@ require("lazy").setup({
         end
     },
     {
-        "smoka7/multicursors.nvim",
-        dependencies = {
-            "smoka7/hydra.nvim",
-        },
-        config = function()
-            require('multicursors').setup {
-            }
-        end
-    },
-    {
         "ray-x/go.nvim",
         dependencies = {
             "ray-x/guihua.lua",
@@ -338,8 +295,7 @@ require("lazy").setup({
             "nvim-treesitter/nvim-treesitter",
         },
         config = function()
-            require("go").setup {
-            }
+            require("go").setup()
             require('lspconfig').gopls.setup({
                 gopls_cmd = vim.fn.expand('$GOPATH/go/gopls'),
                 fillstruct = 'gopls',
@@ -404,4 +360,3 @@ require("lazy").setup({
         end
     }
 })
-
