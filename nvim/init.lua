@@ -60,6 +60,7 @@ vim.keymap.set('n', '<leader>ta', function() require('neotest').run.run(vim.fn.g
 vim.keymap.set('n', '<leader>tt', function() require('neotest').run.run() end)
 vim.keymap.set('n', '<leader>td', function() require('neotest').run.run({ stragegy = "dap" }) end)
 vim.keymap.set('n', '<leader>to', function() require('neotest').output.open({ enter = true }) end)
+vim.keymap.set('n', '<leader>tw', ':Trouble workspace_diagnostics<cr>', { desc = '[T]rouble [W]orkspace diagnostics' })
 vim.keymap.set('n', '<leader>tr', ':TroubleToggle<cr>', { desc = '[Tr]rouble' })
 vim.keymap.set('n', '<leader>tx', ':TroubleToggle quickfix<cr>', { desc = '[T]rouble quick fi[X]' })
 vim.keymap.set('n', '<leader>rr', ':RustLsp runnables<cr>', { desc = '[R]ust [R]unnables' })
