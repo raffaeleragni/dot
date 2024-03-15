@@ -58,9 +58,11 @@ vim.keymap.set('n', '<leader>ta', function() require('neotest').run.run(vim.fn.g
 vim.keymap.set('n', '<leader>tt', function() require('neotest').run.run() end)
 vim.keymap.set('n', '<leader>td', function() require('neotest').run.run({ stragegy = "dap" }) end)
 vim.keymap.set('n', '<leader>to', function() require('neotest').output.open({ enter = true }) end)
-vim.keymap.set('n', '<leader>tr', ':Trouble<cr>')
-vim.keymap.set('n', '<leader>rr', ':RustLsp runnables<cr>')
-vim.keymap.set('n', '<leader>rb', ':RustLsp debuggables<cr>')
+vim.keymap.set('n', '<leader>tr', ':Trouble<cr>', { desc = '[T]rouble' })
+vim.keymap.set('n', '<leader>rr', ':RustLsp runnables<cr>', { desc = '[R]ust [R]unnables' })
+vim.keymap.set('n', '<leader>rb', ':RustLsp debuggables<cr>', { desc = '[R]ust De[B]uggables' })
+vim.keymap.set('n', '<leader>rcu', function() require('crates').upgrade_all_crates() end,
+    { desc = '[R]ust [C]rates [U]pdate' })
 vim.keymap.set('n', '<C-b>', function() require('dap').toggle_breakpoint() end)
 vim.keymap.set('n', '<F5>', function() require('dap').continue() end)
 vim.keymap.set('n', '<F6>', function() require('dap').repl.open() end)
@@ -224,6 +226,7 @@ require("lazy").setup({
                     { name = 'nvim_lsp' },
                     { name = 'buffer' },
                     { name = 'luasnip' },
+                    { name = 'crates' },
                 },
                 mapping = {
                     ['<CR>'] = cmp.mapping.confirm({ select = false }),
@@ -247,6 +250,15 @@ require("lazy").setup({
         ft = 'rust',
         init = function()
             vim.g.rustfmt_autosave = 1
+        end
+    },
+    {
+        'saecki/crates.nvim',
+        ft = { "rust", "toml" },
+        config = function(_, opts)
+            local crates = require('crates')
+            crates.setup(opts)
+            crates.show()
         end
     },
     {
