@@ -64,6 +64,8 @@ vim.keymap.set('n', '<F6>', function() require('dap').repl.open() end)
 vim.keymap.set('n', '<F7>', function() require('dap').step_into() end)
 vim.keymap.set('n', '<F8>', function() require('dap').step_over() end)
 vim.keymap.set('n', '<F9>', function() require('dap').stop() end)
+vim.keymap.set('n', '<leader>gD', vim.lsp.buf.declaration)
+vim.keymap.set('n', '<leader>gd', vim.lsp.buf.definition)
 
 
 
@@ -83,7 +85,6 @@ require("lazy").setup({
     'nvim-lua/plenary.nvim',
     'tpope/vim-commentary',
     'ryanoasis/vim-devicons',
-    'williamboman/nvim-lsp-installer',
     'mfussenegger/nvim-jdtls',
     {
         'nvim-telescope/telescope.nvim',
