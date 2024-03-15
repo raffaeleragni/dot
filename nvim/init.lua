@@ -95,19 +95,22 @@ require("lazy").setup({
     'tpope/vim-commentary',
     'ryanoasis/vim-devicons',
     'mfussenegger/nvim-jdtls',
+
     {
         'nvim-telescope/telescope.nvim',
         dependencies = { 'sharkdp/fd' }
     },
+
     {
-        'rose-pine/neovim',
-        config = function()
-            require('rose-pine').setup({
-                variant = "main"
-            })
-            vim.cmd("colorscheme rose-pine")
+        "catppuccin/nvim",
+        name = "catppuccin",
+        priority = 1000,
+        opts = { flavour = "mocha" },
+        init = function()
+            vim.cmd.colorscheme "catppuccin"
         end
     },
+
     {
         "folke/which-key.nvim",
         config = function()
@@ -116,6 +119,7 @@ require("lazy").setup({
             require("which-key").setup()
         end
     },
+
     {
         'nvim-treesitter/nvim-treesitter',
         build = ":TSUpdate",
@@ -131,6 +135,7 @@ require("lazy").setup({
             }
         end
     },
+
     {
         'folke/noice.nvim',
         dependencies = {
@@ -169,6 +174,7 @@ require("lazy").setup({
             })
         end
     },
+
     {
         "nvim-neo-tree/neo-tree.nvim",
         branch = "v3.x",
@@ -194,6 +200,7 @@ require("lazy").setup({
             })
         end
     },
+
     {
         'VonHeikemen/lsp-zero.nvim',
         branch = 'v2.x',
@@ -249,6 +256,7 @@ require("lazy").setup({
             })
         end
     },
+
     {
         'rust-lang/rust.vim',
         ft = 'rust',
@@ -256,6 +264,7 @@ require("lazy").setup({
             vim.g.rustfmt_autosave = 1
         end
     },
+
     {
         'saecki/crates.nvim',
         ft = { "rust", "toml" },
@@ -265,6 +274,7 @@ require("lazy").setup({
             crates.show()
         end
     },
+
     {
         'mrcjkb/rustaceanvim',
         version = '^4',
@@ -293,12 +303,14 @@ require("lazy").setup({
             }
         end
     },
+
     {
         "folke/lsp-trouble.nvim",
         config = function()
             require("trouble").setup()
         end
     },
+
     {
         "nvim-neotest/neotest",
         dependencies = {
@@ -319,6 +331,7 @@ require("lazy").setup({
             })
         end
     },
+
     {
         "ray-x/go.nvim",
         dependencies = {
@@ -336,6 +349,7 @@ require("lazy").setup({
             })
         end
     },
+
     {
         "rcarriga/nvim-dap-ui",
         dependencies = {
@@ -391,4 +405,5 @@ require("lazy").setup({
             }
         end
     }
+
 })
