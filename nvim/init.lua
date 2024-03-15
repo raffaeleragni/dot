@@ -26,6 +26,8 @@ vim.diagnostic.config({
 })
 
 vim.keymap.set('n', 'U', ':redo<cr>')
+vim.keymap.set('v', 'J', ":m '>+1<CR>gv=gv")
+vim.keymap.set('v', 'K', ":m '<-2<CR>gv=gv")
 vim.keymap.set('n', '<PageUp>', '<C-u>', { noremap = true, silent = false })
 vim.keymap.set('n', '<PageDown>', '<C-d>', { noremap = true, silent = false })
 vim.keymap.set('n', '<C-Left>', '<C-w><Left>', { noremap = true, silent = false })
