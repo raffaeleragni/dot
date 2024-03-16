@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-alias rcc='cargo build && cargo build --release && cargo clippy && cargo test'
+alias rcc='cargo clippy && cargo build && cargo test'
 
 cargoenv () {
   if [ -f "$HOME/.cargo/env" ]; then
