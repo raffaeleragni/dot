@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 alias g='git'
 __git_complete g _git
@@ -48,5 +48,17 @@ gsync() {
 
 gtotal() {
 echo $(git log --author="$(git config user.name)" --no-merges --before=$(date "+%Y-%m-%dT00:00")  --reverse | grep commit | wc -l) commits, $(git log --author="$(git config user.name)" --no-merges --before=$(date "+%Y-%m-%dT00:00")  --reverse --stat | grep -Eo "[0-9]{1,} files? changed" | grep -Eo "[0-9]{1,}" | awk "{ sum += \$1 } END { print sum }") files changed, $(git log --author="$(git config user.name)" --no-merges --before=$(date "+%Y-%m-%dT00:00")  --reverse --stat | grep -Eo "[0-9]{1,} insertions?" | grep -Eo "[0-9]{1,}" | awk "{ sum += \$1 } END { print sum }") insertions and $(git log --author="$(git config user.name)" --no-merges --before=$(date "+%Y-%m-01T00:00")  --reverse --stat | grep -Eo "[0-9]{1,} deletions?" | grep -Eo "[0-9]{1,}" | awk "{ sum += \$1 } END { print sum }") deletions
+}
+
+gmerged() {
+    BRANCH=`git rev-parse --abbrev-ref HEAD`
+    MASTER=master
+    if [ `git rev-parse --verify main 2>/dev/null` ]; then
+        MASTER=main
+    fi
+    git checkout $MASTER
+    git pull
+    git branch -D $BRANCH
+    git remote prune origin
 }
 
