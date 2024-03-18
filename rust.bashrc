@@ -16,8 +16,9 @@ if [ -z "`which rustc`" ]; then
   rustup component add rust-analyzer
 fi
 
+export CARGO_TARGET_DIR=$HOME/.cargo-target
+export CARGO_INCREMENTAL=1
 if [ ! -z "`which mold`" ]; then
   export RUSTFLAGS="$RUSTFLAGS -C linker=clang -C link-arg=-fuse-ld=/usr/bin/mold"
 fi
 
-export CARGO_TARGET_DIR=$HOME/.cargo-target
