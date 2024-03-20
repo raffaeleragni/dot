@@ -67,6 +67,7 @@ vim.keymap.set('n', '<leader>gD', vim.lsp.buf.declaration, { desc = '[g]o to [D]
 vim.keymap.set('n', '<leader>gd', vim.lsp.buf.definition, { desc = '[g]o to [d]efinition' })
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous [d]iagnostic message' })
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next [d]iagnostic message' })
+vim.keymap.set('n', 'K', vim.lsp.buf.hover(), { desc = '[K] Hover' })
 vim.keymap.set('n', '<leader>ff', function() require('telescope.builtin').find_files() end, { desc = '[f]ind [f]ile' })
 vim.keymap.set('n', '<leader>fg', function() require('telescope.builtin').live_grep() end, { desc = '[f]ind [g]rep' })
 vim.keymap.set('n', '<leader>fb', function() require('telescope.builtin').buffers() end, { desc = '[g]ind [b]uffers' })
@@ -116,12 +117,7 @@ require("lazy").setup({
     'tpope/vim-commentary',
     'ryanoasis/vim-devicons',
     'mfussenegger/nvim-jdtls',
-
-    {
-        'nvim-telescope/telescope.nvim',
-        dependencies = { 'sharkdp/fd' }
-    },
-
+    'nvim-telescope/telescope.nvim',
     {
         "catppuccin/nvim",
         name = "catppuccin",
