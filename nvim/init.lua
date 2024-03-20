@@ -90,6 +90,14 @@ vim.keymap.set('n', '<leader>7', '7gt')
 vim.keymap.set('n', '<leader>8', '8gt')
 vim.keymap.set('n', '<leader>9', '9gt')
 vim.keymap.set('n', '<leader>0', ':tablast<cr>')
+vim.keymap.set('n', '<leader>l', ':tabm +1<cr>')
+vim.keymap.set('n', '<leader>h', ':tabm -1<cr>')
+vim.keymap.set('n', '<leader>k', 'gT')
+vim.keymap.set('n', '<leader>j', 'gt')
+vim.keymap.set('n', '<leader><Right>', ':tabm +1<cr>')
+vim.keymap.set('n', '<leader><Left>', ':tabm -1<cr>')
+vim.keymap.set('n', '<leader><Up>', 'gT')
+vim.keymap.set('n', '<leader><Down>', 'gt')
 
 vim.diagnostic.config({
     virtual_text = {
