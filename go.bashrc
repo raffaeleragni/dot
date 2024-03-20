@@ -7,7 +7,7 @@ if [ ! -d "$HOME/.go" ]; then
     echo 'source "$HOME/.go.env"' >> ~/.bashrc
 fi
 
-if [ -z "`which gopls`"]; then
+if [ ! -f "$HOME/go/bin/gopls" ]; then
     go install golang.org/x/tools/gopls@latest
 fi
 
