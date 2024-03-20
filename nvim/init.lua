@@ -26,12 +26,12 @@ vim.diagnostic.config({
 })
 
 vim.api.nvim_create_autocmd('TextYankPost', {
-  group = vim.api.nvim_create_augroup('highlight_yank', {}),
-  desc = 'Hightlight selection on yank',
-  pattern = '*',
-  callback = function()
-    vim.highlight.on_yank { higroup = 'IncSearch', timeout = 200 }
-  end,
+    group = vim.api.nvim_create_augroup('highlight_yank', {}),
+    desc = 'Hightlight selection on yank',
+    pattern = '*',
+    callback = function()
+        vim.highlight.on_yank { higroup = 'IncSearch', timeout = 200 }
+    end,
 })
 
 vim.keymap.set('n', 'U', ':redo<cr>')
@@ -57,9 +57,9 @@ vim.keymap.set("n", "<C-q>", ':q<CR>')
 vim.keymap.set('n', '<C-f>', vim.lsp.buf.format)
 vim.keymap.set("n", "<C-t>", vim.cmd.tabnew)
 vim.keymap.set("n", "<C-g>", function() require('telescope.builtin').find_files() end)
-vim.keymap.set("n", "<C-r>", vim.lsp.buf.rename, {noremap = true})
-vim.keymap.set("v", "<C-r>", vim.lsp.buf.rename, {noremap = true})
-vim.keymap.set("i", "<C-r>", vim.lsp.buf.rename, {noremap = true})
+vim.keymap.set("n", "<C-r>", vim.lsp.buf.rename, { noremap = true })
+vim.keymap.set("v", "<C-r>", vim.lsp.buf.rename, { noremap = true })
+vim.keymap.set("i", "<C-r>", vim.lsp.buf.rename, { noremap = true })
 vim.keymap.set("n", "<C-x>", vim.lsp.buf.code_action, { noremap = true })
 vim.keymap.set("v", "<C-x>", vim.lsp.buf.code_action, { noremap = true })
 vim.keymap.set("i", "<C-x>", vim.lsp.buf.code_action, { noremap = true })
@@ -67,22 +67,25 @@ vim.keymap.set('n', '<leader>gD', vim.lsp.buf.declaration, { desc = '[g]o to [D]
 vim.keymap.set('n', '<leader>gd', vim.lsp.buf.definition, { desc = '[g]o to [d]efinition' })
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous [d]iagnostic message' })
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next [d]iagnostic message' })
-vim.keymap.set('n', '<leader>ff', function() require('telescope.builtin').find_files() end, {desc = '[f]ind [f]ile'})
-vim.keymap.set('n', '<leader>fg', function() require('telescope.builtin').live_grep() end, {desc = '[f]ind [g]rep'})
-vim.keymap.set('n', '<leader>fb', function() require('telescope.builtin').buffers() end, {desc = '[g]ind [b]uffers'})
-vim.keymap.set('n', '<leader>fh', function() require('telescope.builtin').help_tags() end, {desc = '[g]ind [h]elp'})
-vim.keymap.set('n', '<leader>d', vim.diagnostic.open_float, {desc = '[D]iagnostic'})
-vim.keymap.set('n', '<leader>tf', function() require('neotest').run.run(vim.fn.expand("%")) end, {desc = '[t]est [g]ile'})
-vim.keymap.set('n', '<leader>ta', function() require('neotest').run.run(vim.fn.getcwd()) end, {desc = '[t]est [a]ll'})
-vim.keymap.set('n', '<leader>tt', function() require('neotest').run.run() end, {desc = '[t]est [t]his test'})
-vim.keymap.set('n', '<leader>td', function() require('neotest').run.run({ stragegy = "dap" }) end, {desc = '[t]est [d]ebug'})
-vim.keymap.set('n', '<leader>to', function() require('neotest').output.open({ enter = true }) end, {desc = '[t]est [o]utput'})
+vim.keymap.set('n', '<leader>ff', function() require('telescope.builtin').find_files() end, { desc = '[f]ind [f]ile' })
+vim.keymap.set('n', '<leader>fg', function() require('telescope.builtin').live_grep() end, { desc = '[f]ind [g]rep' })
+vim.keymap.set('n', '<leader>fb', function() require('telescope.builtin').buffers() end, { desc = '[g]ind [b]uffers' })
+vim.keymap.set('n', '<leader>fh', function() require('telescope.builtin').help_tags() end, { desc = '[g]ind [h]elp' })
+vim.keymap.set('n', '<leader>d', vim.diagnostic.open_float, { desc = '[D]iagnostic' })
+vim.keymap.set('n', '<leader>tf', function() require('neotest').run.run(vim.fn.expand("%")) end, { desc = '[t]est [g]ile' })
+vim.keymap.set('n', '<leader>ta', function() require('neotest').run.run(vim.fn.getcwd()) end, { desc = '[t]est [a]ll' })
+vim.keymap.set('n', '<leader>tt', function() require('neotest').run.run() end, { desc = '[t]est [t]his test' })
+vim.keymap.set('n', '<leader>td', function() require('neotest').run.run({ stragegy = "dap" }) end,
+    { desc = '[t]est [d]ebug' })
+vim.keymap.set('n', '<leader>to', function() require('neotest').output.open({ enter = true }) end,
+    { desc = '[t]est [o]utput' })
 vim.keymap.set('n', '<leader>tw', ':Trouble workspace_diagnostics<cr>', { desc = '[t]rouble [w]orkspace diagnostics' })
 vim.keymap.set('n', '<leader>tr', ':TroubleToggle<cr>', { desc = '[tr]rouble' })
 vim.keymap.set('n', '<leader>tx', ':TroubleToggle quickfix<cr>', { desc = '[t]rouble quick fi[x]' })
 vim.keymap.set('n', '<leader>tp', function() require('trouble').previous({ skip_groups = true, jump = true }) end,
     { desc = '[t]rouble [p]revious' })
-vim.keymap.set('n', '<leader>tn', function() require('trouble').next({ skip_groups = true, jump = true }) end, { desc = '[t]rouble [n]ext' })
+vim.keymap.set('n', '<leader>tn', function() require('trouble').next({ skip_groups = true, jump = true }) end,
+    { desc = '[t]rouble [n]ext' })
 vim.keymap.set('n', '<leader>rr', ':RustLsp runnables<cr>', { desc = '[r]ust [r]unnables' })
 vim.keymap.set('n', '<leader>rb', ':RustLsp debuggables<cr>', { desc = '[r]ust De[B]uggables' })
 vim.keymap.set('n', '<leader>rcu', function() require('crates').upgrade_all_crates() end,
@@ -332,9 +335,10 @@ require("lazy").setup({
     {
         "nvim-neotest/neotest",
         dependencies = {
+            "nvim-neotest/nvim-nio",
             "nvim-lua/plenary.nvim",
-            "nvim-treesitter/nvim-treesitter",
             "antoinemadec/FixCursorHold.nvim",
+            "nvim-treesitter/nvim-treesitter",
             "rouge8/neotest-rust",
             "mfussenegger/nvim-dap",
             "rcarriga/nvim-dap-ui",
