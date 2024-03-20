@@ -71,7 +71,7 @@ vim.keymap.set('n', '<leader>tp', function() require('trouble').previous({ skip_
 vim.keymap.set('n', '<leader>tn', function() require('trouble').next({ skip_groups = true, jump = true }) end,
     { desc = '[t]rouble [n]ext' })
 vim.keymap.set('n', '<leader>rr', ':RustLsp runnables<cr>', { desc = '[r]ust [r]unnables' })
-vim.keymap.set('n', '<leader>rb', ':RustLsp debuggables<cr>', { desc = '[r]ust De[B]uggables' })
+vim.keymap.set('n', '<leader>rd', ':RustLsp debuggables<cr>', { desc = '[r]ust [d]ebuggables' })
 vim.keymap.set('n', '<leader>rcu', function() require('crates').upgrade_all_crates() end,
     { desc = '[r]ust [c]rates [u]pdate' })
 vim.keymap.set('n', '<C-b>', function() require('dap').toggle_breakpoint() end)
