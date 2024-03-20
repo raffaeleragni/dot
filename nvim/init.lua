@@ -79,6 +79,16 @@ vim.keymap.set('n', '<F6>', function() require('dap').repl.open() end)
 vim.keymap.set('n', '<F7>', function() require('dap').step_into() end)
 vim.keymap.set('n', '<F8>', function() require('dap').step_over() end)
 vim.keymap.set('n', '<F9>', function() require('dap').stop() end)
+vim.keymap.set('n', '<leader>1', '1gt')
+vim.keymap.set('n', '<leader>2', '2gt')
+vim.keymap.set('n', '<leader>3', '3gt')
+vim.keymap.set('n', '<leader>4', '4gt')
+vim.keymap.set('n', '<leader>5', '5gt')
+vim.keymap.set('n', '<leader>6', '6gt')
+vim.keymap.set('n', '<leader>7', '7gt')
+vim.keymap.set('n', '<leader>8', '8gt')
+vim.keymap.set('n', '<leader>9', '9gt')
+vim.keymap.set('n', '<leader>0', ':tablast<cr>')
 
 vim.diagnostic.config({
     virtual_text = {
