@@ -15,25 +15,6 @@ vim.opt.termguicolors = true
 
 vim.g.mapleader = " "
 
-vim.diagnostic.config({
-    virtual_text = {
-        prefix = 'x',
-    },
-    severity_sort = true,
-    float = {
-        source = "always",
-    },
-})
-
-vim.api.nvim_create_autocmd('TextYankPost', {
-    group = vim.api.nvim_create_augroup('highlight_yank', {}),
-    desc = 'Hightlight selection on yank',
-    pattern = '*',
-    callback = function()
-        vim.highlight.on_yank { higroup = 'IncSearch', timeout = 200 }
-    end,
-})
-
 vim.keymap.set('n', 'U', ':redo<cr>')
 vim.keymap.set('v', 'J', ":m '>+1<CR>gv=gv")
 vim.keymap.set('v', 'K', ":m '<-2<CR>gv=gv")
@@ -73,7 +54,8 @@ vim.keymap.set('n', '<leader>fg', function() require('telescope.builtin').live_g
 vim.keymap.set('n', '<leader>fb', function() require('telescope.builtin').buffers() end, { desc = '[g]ind [b]uffers' })
 vim.keymap.set('n', '<leader>fh', function() require('telescope.builtin').help_tags() end, { desc = '[g]ind [h]elp' })
 vim.keymap.set('n', '<leader>d', vim.diagnostic.open_float, { desc = '[D]iagnostic' })
-vim.keymap.set('n', '<leader>tf', function() require('neotest').run.run(vim.fn.expand("%")) end, { desc = '[t]est [g]ile' })
+vim.keymap.set('n', '<leader>tf', function() require('neotest').run.run(vim.fn.expand("%")) end,
+    { desc = '[t]est [f]ile' })
 vim.keymap.set('n', '<leader>ta', function() require('neotest').run.run(vim.fn.getcwd()) end, { desc = '[t]est [a]ll' })
 vim.keymap.set('n', '<leader>tt', function() require('neotest').run.run() end, { desc = '[t]est [t]his test' })
 vim.keymap.set('n', '<leader>td', function() require('neotest').run.run({ stragegy = "dap" }) end,
@@ -97,6 +79,25 @@ vim.keymap.set('n', '<F6>', function() require('dap').repl.open() end)
 vim.keymap.set('n', '<F7>', function() require('dap').step_into() end)
 vim.keymap.set('n', '<F8>', function() require('dap').step_over() end)
 vim.keymap.set('n', '<F9>', function() require('dap').stop() end)
+
+vim.diagnostic.config({
+    virtual_text = {
+        prefix = 'x',
+    },
+    severity_sort = true,
+    float = {
+        source = "always",
+    },
+})
+
+vim.api.nvim_create_autocmd('TextYankPost', {
+    group = vim.api.nvim_create_augroup('highlight_yank', {}),
+    desc = 'Hightlight selection on yank',
+    pattern = '*',
+    callback = function()
+        vim.highlight.on_yank { higroup = 'IncSearch', timeout = 200 }
+    end,
+})
 
 
 
@@ -158,18 +159,14 @@ require("lazy").setup({
         'folke/noice.nvim',
         dependencies = {
             "MunifTanjim/nui.nvim",
-            {
-                "rcarriga/nvim-notify",
-                config = function()
-                    require("notify").setup({
-                        render = "minimal",
-                        stages = "static",
-                        top_down = false
-                    })
-                end
-            }
+            "rcarriga/nvim-notify",
         },
         config = function()
+            require("notify").setup({
+                render = "minimal",
+                stages = "static",
+                top_down = false
+            })
             require("noice").setup({
                 cmdline = {
                     enabled = true,
@@ -246,6 +243,7 @@ require("lazy").setup({
             end)
 
             lsp.setup()
+
             local cmp = require('cmp')
             local cmp_action = lsp.cmp_action()
 
@@ -266,10 +264,6 @@ require("lazy").setup({
                     ['<PageDown>'] = cmp.mapping.scroll_docs(4),
                     ['<C-u>'] = cmp.mapping.scroll_docs(-4),
                     ['<C-d>'] = cmp.mapping.scroll_docs(4),
-                },
-                window = {
-                    completion = cmp.config.window.bordered(),
-                    documentation = cmp.config.window.bordered(),
                 },
             })
         end
