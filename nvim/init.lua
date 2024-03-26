@@ -60,8 +60,8 @@ vim.keymap.set('n', '<leader>tf', function() require('neotest').run.run(vim.fn.e
 vim.keymap.set('n', '<leader>ta', function() require('neotest').run.run(vim.fn.getcwd()) end, { desc = '[t]est [a]ll' })
 vim.keymap.set('n', '<leader>tt', function() require('neotest').run.run() end, { desc = '[t]est [t]his test' })
 vim.keymap.set('n', '<leader>td', function() require('neotest').run.run({ stragegy = "dap" }) end,
-vim.keymap.set('n', '<leader>ts', function() require('neotest').run.stop() end, { desc = '[t]est [s]top' })
     { desc = '[t]est [d]ebug' })
+vim.keymap.set('n', '<leader>ts', function() require('neotest').run.stop() end, { desc = '[t]est [s]top' })
 vim.keymap.set('n', '<leader>to', function() require('neotest').output.open({ enter = true }) end,
     { desc = '[t]est [o]utput' })
 vim.keymap.set('n', '<leader>tw', ':Trouble workspace_diagnostics<cr>', { desc = '[t]rouble [w]orkspace diagnostics' })
