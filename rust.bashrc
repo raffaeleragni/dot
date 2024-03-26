@@ -17,6 +17,9 @@ if [ -z "`which rustc`" ]; then
 fi
 
 export CARGO_TARGET_DIR=$HOME/.cargo-target
+if [ ! -d $CARGO_TARGET_DIR ]; then
+    mkdir -p $CARGO_TARGET_DIR
+fi
 export CARGO_INCREMENTAL=1
 if [ ! -z "`which mold`" ]; then
   export RUSTFLAGS="$RUSTFLAGS -C linker=clang -C link-arg=-fuse-ld=/usr/bin/mold"
