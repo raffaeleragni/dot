@@ -164,7 +164,7 @@ require("lazy").setup({
         build = ":TSUpdate",
         config = function()
             require('nvim-treesitter.configs').setup {
-                ensure_installed = { "lua", "vim", "rust" },
+                ensure_installed = { "vim", "regex", "lua", "bash", "markdown", "markdown_inline", "rust" },
                 sync_install = false,
                 auto_install = true,
                 highlight = {
@@ -329,13 +329,6 @@ require("lazy").setup({
     },
 
     {
-        "folke/lsp-trouble.nvim",
-        config = function()
-            require("trouble").setup()
-        end
-    },
-
-    {
         "nvim-neotest/neotest",
         dependencies = {
             "nvim-neotest/nvim-nio",
@@ -430,6 +423,7 @@ require("lazy").setup({
             }
         end
     },
+
     {
         'kristijanhusak/vim-dadbod-ui',
         dependencies = {
@@ -447,4 +441,5 @@ require("lazy").setup({
             vim.g.db_ui_use_nerd_fonts = 1
         end,
     }
+
 })
