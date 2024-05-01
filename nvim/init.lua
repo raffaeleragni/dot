@@ -280,8 +280,8 @@ require("lazy").setup({
                 },
                 mapping = {
                     ['<CR>'] = cmp.mapping.confirm({ select = false }),
-                    ['<Tab>'] = cmp_action.luasnip_supertab(),
-                    ['<S-Tab>'] = cmp_action.luasnip_shift_supertab(),
+                    ['<C-n>'] = cmp_action.luasnip_supertab(),
+                    ['<C-p>'] = cmp_action.luasnip_shift_supertab(),
                     ['<C-Space>'] = cmp.mapping.complete(),
                     ['<PageUp>'] = cmp.mapping.scroll_docs(-4),
                     ['<PageDown>'] = cmp.mapping.scroll_docs(4),
