@@ -179,6 +179,10 @@ require("lazy").setup({
     },
 
     {
+        'nvim-treesitter/nvim-treesitter-context'
+    },
+
+    {
         'folke/noice.nvim',
         dependencies = {
             "MunifTanjim/nui.nvim",
