@@ -124,18 +124,6 @@ vim.api.nvim_create_autocmd('TextYankPost', {
     end,
 })
 
-local lombokurl = "https://projectlombok.org/downloads/lombok.jar"
-local lombokpath = vim.fn.stdpath("data") .. "/lombok/lombok.jar"
-if not vim.loop.fs_stat(lombokpath) then
-    vim.fn.system({
-        "curl",
-        "--create-dirs",
-        lombokurl,
-        "-o",
-        lombokpath
-    })
-end
-
 
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
