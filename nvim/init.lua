@@ -55,8 +55,10 @@ vim.keymap.set('n', '<leader>ff', function() require('telescope.builtin').find_f
 vim.keymap.set('n', '<leader>fg', function() require('telescope.builtin').live_grep() end, { desc = '[f]ind [g]rep' })
 vim.keymap.set('n', '<leader>fb', function() require('telescope.builtin').buffers() end, { desc = '[f]ind [b]uffers' })
 vim.keymap.set('n', '<leader>fh', function() require('telescope.builtin').help_tags() end, { desc = '[f]ind [h]elp' })
-vim.keymap.set('n', '<leader>fr', function() require('telescope.builtin').lsp_references() end, { desc = '[f]ind [r]eference' })
-vim.keymap.set('n', '<leader>fd', function() require('telescope.builtin').lsp_definitions() end, { desc = '[f]ind [d]efinition' })
+vim.keymap.set('n', '<leader>fr', function() require('telescope.builtin').lsp_references() end,
+    { desc = '[f]ind [r]eference' })
+vim.keymap.set('n', '<leader>fd', function() require('telescope.builtin').lsp_definitions() end,
+    { desc = '[f]ind [d]efinition' })
 vim.keymap.set('n', '<leader>d', vim.diagnostic.open_float, { desc = '[D]iagnostic' })
 vim.keymap.set('n', '<leader>tf', function() require('neotest').run.run(vim.fn.expand("%")) end,
     { desc = '[t]est [f]ile' })
@@ -438,6 +440,13 @@ require("lazy").setup({
                     args = { '--port', '${port}' },
                 },
             }
+        end
+    },
+
+    {
+        'laytan/cloak.nvim',
+        config = function()
+            require('cloak').setup()
         end
     },
 
