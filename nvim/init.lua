@@ -124,6 +124,18 @@ vim.api.nvim_create_autocmd('TextYankPost', {
     end,
 })
 
+local lombokurl = "https://projectlombok.org/downloads/lombok.jar"
+local lombokpath = vim.fn.stdpath("data") .. "/lombok/lombok.jar"
+if not vim.loop.fs_stat(lombokpath) then
+    vim.fn.system({
+        "curl",
+        "--create-dirs",
+        lombokurl,
+        "-o",
+        lombokpath
+    })
+end
+
 
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
@@ -142,7 +154,6 @@ require("lazy").setup({
     'nvim-lua/plenary.nvim',
     'tpope/vim-commentary',
     'ryanoasis/vim-devicons',
-    'mfussenegger/nvim-jdtls',
     'nvim-telescope/telescope.nvim',
 
     {
@@ -306,6 +317,10 @@ require("lazy").setup({
             -- or leave it empty to use the default settings
             -- refer to the configuration section below
         },
+    },
+
+    {
+        'mfussenegger/nvim-jdtls',
     },
 
     {
