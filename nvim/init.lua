@@ -72,7 +72,7 @@ vim.keymap.set('n', '<leader>ts', function() require('neotest').run.stop() end, 
 vim.keymap.set('n', '<leader>to', function() require('neotest').output.open({ enter = true }) end,
     { desc = '[t]est [o]utput' })
 vim.keymap.set('n', '<leader>gta', ":GoTest<cr>", { desc = '[g]o [t]est [a]ll' })
-vim.keymap.set('n', '<leader>gta', ":GoTestFile<cr>", { desc = '[g]o [t]est [f]ile' })
+vim.keymap.set('n', '<leader>gtf', ":GoTestFile<cr>", { desc = '[g]o [t]est [f]ile' })
 vim.keymap.set('n', '<leader>gtt', ":GoTestFunc<cr>", { desc = '[g]o [t]est [t]his est' })
 vim.keymap.set('n', '<leader>tw', ':Trouble workspace_diagnostics<cr>', { desc = '[t]rouble [w]orkspace diagnostics' })
 vim.keymap.set('n', '<leader>tr', ':TroubleToggle<cr>', { desc = '[tr]rouble' })
