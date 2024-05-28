@@ -85,6 +85,7 @@ vim.keymap.set('n', '<leader>rr', ':RustLsp runnables<cr>', { desc = '[r]ust [r]
 vim.keymap.set('n', '<leader>rd', ':RustLsp debuggables<cr>', { desc = '[r]ust [d]ebuggables' })
 vim.keymap.set('n', '<leader>rcu', function() require('crates').upgrade_all_crates() end,
     { desc = '[r]ust [c]rates [u]pdate' })
+vim.keymap.set('n', '<leader>gmt', ':!go mod tidy<cr>', { desc = '[g]o [m]od [t]idy' })
 vim.keymap.set('n', '<C-b>', function() require('dap').toggle_breakpoint() end)
 vim.keymap.set('n', '<F5>', function() require('dap').continue() end)
 vim.keymap.set('n', '<F6>', function() require('dap').repl.open() end)
