@@ -387,6 +387,7 @@ require("lazy").setup({
             "nvim-neotest/neotest-go",
             "mfussenegger/nvim-dap",
             "rcarriga/nvim-dap-ui",
+            "rcasia/neotest-java",
         },
         config = function()
             require('neotest').setup({
