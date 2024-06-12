@@ -169,6 +169,9 @@ require("lazy").setup({
     {
         'nvim-treesitter/nvim-treesitter',
         build = ":TSUpdate",
+        dependencies = {
+            'nvim-treesitter/nvim-treesitter-context'
+        },
         config = function()
             require('nvim-treesitter.configs').setup {
                 ensure_installed = { "vim", "regex", "lua", "bash", "markdown", "markdown_inline", "rust" },
@@ -180,10 +183,6 @@ require("lazy").setup({
                 },
             }
         end
-    },
-
-    {
-        'nvim-treesitter/nvim-treesitter-context'
     },
 
     {
@@ -276,25 +275,29 @@ require("lazy").setup({
             lsp.setup()
 
             local cmp = require('cmp')
-            local cmp_action = lsp.cmp_action()
-
             cmp.setup({
                 reload_workspace_from_cargo_toml = true,
                 sources = {
                     { name = 'nvim_lsp' },
                     { name = 'buffer' },
-                    { name = 'luasnip' },
+                    { name = 'path' },
                     { name = 'crates' },
                 },
                 mapping = {
-                    ['<CR>'] = cmp.mapping.confirm({ select = false }),
-                    ['<C-n>'] = cmp_action.luasnip_supertab(),
-                    ['<C-p>'] = cmp_action.luasnip_shift_supertab(),
+                    ['<CR>'] = cmp.mapping.confirm({ behavior = cmp.SelectBehavior.Insert, select = false }),
+                    ['<C-y>'] = cmp.mapping.confirm({ behavior = cmp.SelectBehavior.Insert, select = false }),
+                    ['<C-n>'] = cmp.mapping.select_next_item { behavior = cmp.SelectBehavior.Insert },
+                    ['<C-p>'] = cmp.mapping.select_prev_item { behavior = cmp.SelectBehavior.Insert },
                     ['<C-Space>'] = cmp.mapping.complete(),
                     ['<PageUp>'] = cmp.mapping.scroll_docs(-4),
                     ['<PageDown>'] = cmp.mapping.scroll_docs(4),
                     ['<C-u>'] = cmp.mapping.scroll_docs(-4),
                     ['<C-d>'] = cmp.mapping.scroll_docs(4),
+                },
+                snippet = {
+                    expand = function(args)
+                        require('luasnip').lsp_expand(args.body)
+                    end,
                 },
             })
         end
