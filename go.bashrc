@@ -13,3 +13,7 @@ if [ ! -f "$HOME/go/bin/gopls" ]; then
     go install golang.org/x/tools/gopls@latest
 fi
 
+if [ ! -f "$HOME/go/bin/dlv" ]; then
+    go install github.com/go-delve/delve/cmd/dlv@latest
+fi
+

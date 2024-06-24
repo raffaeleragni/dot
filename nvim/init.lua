@@ -389,10 +389,12 @@ require("lazy").setup({
             "rouge8/neotest-rust",
             "nvim-neotest/neotest-go",
             "mfussenegger/nvim-dap",
+            "leoluz/nvim-dap-go",
             "rcarriga/nvim-dap-ui",
             "rcasia/neotest-java",
         },
         config = function()
+            require('dap-go').setup()
             require('neotest').setup({
                 adapters = {
                     require('neotest-rust') {
