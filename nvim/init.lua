@@ -400,7 +400,8 @@ require("lazy").setup({
                     require('neotest-rust') {
                         dap_adapter = "lldb",
                     },
-                    require('neotest-go')
+                    require('neotest-go'),
+                    require('neotest-java'),
                 }
             })
         end
