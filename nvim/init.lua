@@ -401,7 +401,6 @@ require("lazy").setup({
                         dap_adapter = "lldb",
                     },
                     require('neotest-go'),
-                    require('neotest-java'),
                 }
             })
         end
