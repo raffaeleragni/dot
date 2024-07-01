@@ -61,6 +61,7 @@ vim.keymap.set('n', '<leader>fr', function() require('telescope.builtin').lsp_re
     { desc = '[f]ind [r]eference' })
 vim.keymap.set('n', '<leader>fd', function() require('telescope.builtin').lsp_definitions() end,
     { desc = '[f]ind [d]efinition' })
+vim.keymap.set('n', '<leader>fn', ':Telescope notify<cr>', { desc = '[f]ind in [n]otifications' })
 vim.keymap.set('n', '<leader>d', vim.diagnostic.open_float, { desc = '[D]iagnostic' })
 vim.keymap.set('n', '<leader>tf', function() require('neotest').run.run(vim.fn.expand("%")) end,
     { desc = '[t]est [f]ile' })
@@ -145,7 +146,19 @@ require("lazy").setup({
     'nvim-lua/plenary.nvim',
     'tpope/vim-commentary',
     'ryanoasis/vim-devicons',
-    'nvim-telescope/telescope.nvim',
+
+    {
+        'nvim-telescope/telescope.nvim',
+        opts = {
+            defaults = {
+                layout_strategy = 'vertical',
+                layout_config = {
+                    width = 0.9,
+                    height = 0.9
+                },
+            },
+        }
+    },
 
     {
         "catppuccin/nvim",
@@ -212,7 +225,7 @@ require("lazy").setup({
                 presets = {
                     bottom_search = true,
                     command_palette = true,
-                    long_message_to_split = true,
+                    long_message_to_split = false,
                     inc_rename = false,
                     lsp_doc_border = false,
                 },
