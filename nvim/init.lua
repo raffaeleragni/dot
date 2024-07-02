@@ -411,7 +411,7 @@ require("lazy").setup({
             require('neotest').setup({
                 adapters = {
                     require('neotest-rust') {
-                        dap_adapter = "lldb",
+                        dap_adapter = "codelldb",
                     },
                     require('neotest-go'),
                 }
@@ -457,19 +457,11 @@ require("lazy").setup({
             dap.listeners.before.event_exited.dapui_config = function()
                 dapui.close()
             end
-            dap.adapters.lldb = {
-                type = 'server',
-                port = "${port}",
-                executable = {
-                    command = '/usr/bin/lldb-vscode',
-                    args = { "--port", "${port}" },
-                }
-            }
 
             dap.configurations.rust = {
                 {
                     name = "Rust debug",
-                    type = "lldb",
+                    type = "codelldb",
                     request = "launch",
                     program = function()
                         vim.fn.jobstart('cargo build')
