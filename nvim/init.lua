@@ -15,12 +15,12 @@ vim.opt.termguicolors = true
 
 vim.g.mapleader = " "
 
-vim.keymap.set('v', 'y', 'ygv<esc>')
-vim.keymap.set('n', 'U', ':redo<cr>')
-vim.keymap.set('v', 'J', ":m '>+1<CR>gv=gv")
-vim.keymap.set('v', 'K', ":m '<-2<CR>gv=gv")
-vim.keymap.set('n', 'H', "^")
-vim.keymap.set('n', 'L', "$")
+vim.keymap.set('v', 'y', 'ygv<esc>', { desc = "return cursor to position before yank" })
+vim.keymap.set('n', 'U', ':redo<cr>', { desc = "C-r is used for rename" })
+vim.keymap.set('v', 'J', ":m '>+1<CR>gv=gv", { desc = "move selection down" })
+vim.keymap.set('v', 'K', ":m '<-2<CR>gv=gv", { desc = "move selection up" })
+vim.keymap.set('n', 'H', "^", { desc = "go at start of line" })
+vim.keymap.set('n', 'L', "$", { desc = "go at end of line" })
 vim.keymap.set('n', '<PageUp>', '<C-u>', { noremap = true, silent = false })
 vim.keymap.set('n', '<PageDown>', '<C-d>', { noremap = true, silent = false })
 vim.keymap.set('n', '<C-u>', '<C-u>zz', { noremap = true, silent = false })
