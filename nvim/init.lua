@@ -15,8 +15,8 @@ vim.opt.termguicolors = true
 
 vim.g.mapleader = " "
 
-vim.keymap.set('n', '<leader>y', '"+y', { desc = "[y]ank to global clipboard" }) 
-vim.keymap.set('n', '<leader>Y', '"+Y', { desc = "[Y]ank to global clipboard" }) 
+vim.keymap.set('n', '<leader>y', '"+y', { desc = "[y]ank to global clipboard" })
+vim.keymap.set('n', '<leader>Y', '"+Y', { desc = "[Y]ank to global clipboard" })
 vim.keymap.set('v', 'y', 'ygv<esc>', { desc = "return cursor to position before yank" })
 vim.keymap.set('n', 'U', ':redo<cr>', { desc = "C-r is used for rename" })
 vim.keymap.set('v', 'J', ":m '>+1<CR>gv=gvzz", { desc = "move selection down and center screen" })
@@ -299,6 +299,8 @@ require("lazy").setup({
             end)
 
             lsp.setup()
+            local luasnip = require('luasnip')
+            require("luasnip.loaders.from_snipmate").lazy_load()
 
             local cmp = require('cmp')
             cmp.setup({
@@ -310,10 +312,50 @@ require("lazy").setup({
                     { name = 'crates' },
                 },
                 mapping = {
-                    ['<CR>'] = cmp.mapping.confirm({ behavior = cmp.SelectBehavior.Insert, select = false }),
-                    ['<C-y>'] = cmp.mapping.confirm({ behavior = cmp.SelectBehavior.Insert, select = false }),
-                    ['<C-n>'] = cmp.mapping.select_next_item { behavior = cmp.SelectBehavior.Insert },
-                    ['<C-p>'] = cmp.mapping.select_prev_item { behavior = cmp.SelectBehavior.Insert },
+                    ['<CR>'] = cmp.mapping(function(fallback)
+                        if cmp.visible() then
+                            if luasnip.expandable() then
+                                luasnip.expand()
+                            else
+                                cmp.confirm({
+                                    select = true,
+                                })
+                            end
+                        else
+                            fallback()
+                        end
+                    end),
+                    ['<C-y>'] = cmp.mapping(function(fallback)
+                        if cmp.visible() then
+                            if luasnip.expandable() then
+                                luasnip.expand()
+                            else
+                                cmp.confirm({
+                                    select = true,
+                                })
+                            end
+                        else
+                            fallback()
+                        end
+                    end),
+                    ['<C-n>'] = cmp.mapping(function(fallback)
+                        if cmp.visible() then
+                            cmp.select_next_item()
+                        elseif luasnip.locally_jumpable(1) then
+                            luasnip.jump(1)
+                        else
+                            fallback()
+                        end
+                    end, { "i", "s" }),
+                    ['<C-p>'] = cmp.mapping(function(fallback)
+                        if cmp.visible() then
+                            cmp.select_prev_item()
+                        elseif luasnip.locally_jumpable(-1) then
+                            luasnip.jump(-1)
+                        else
+                            fallback()
+                        end
+                    end, { "i", "s" }),
                     ['<C-Space>'] = cmp.mapping.complete(),
                     ['<PageUp>'] = cmp.mapping.scroll_docs(-4),
                     ['<PageDown>'] = cmp.mapping.scroll_docs(4),
@@ -322,7 +364,7 @@ require("lazy").setup({
                 },
                 snippet = {
                     expand = function(args)
-                        require('luasnip').lsp_expand(args.body)
+                        luasnip.lsp_expand(args.body)
                     end,
                 },
             })
