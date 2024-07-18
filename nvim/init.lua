@@ -300,7 +300,7 @@ require("lazy").setup({
 
             lsp.setup()
             local luasnip = require('luasnip')
-            require("luasnip.loaders.from_snipmate").lazy_load()
+            require("luasnip.loaders.from_snipmate").load()
 
             local cmp = require('cmp')
             cmp.setup({
