@@ -1,0 +1,32 @@
+import:
+  - ~/.config/alacritty/catppuccin-mocha.yml
+
+shell:
+  program: "/bin/bash"
+
+window:
+  startup_mode: "Fullscreen"
+
+font:
+  normal: 
+    family: "DejaVuSansMono"
+    style: "Regular"
+  bold:
+    family: "DejaVuSansMono"
+    style: "Regular"
+  italic:
+    family: "DejaVuSansMono"
+    style: "Regular"
+  bold_italic:
+    family: "DejaVuSansMono"
+    style: "Regular"
+  size: 18
+
+colors:
+  primary:
+    background: "#1A1D23"
+
+keyboard:
+  bindings: 
+    - key: "F11"
+      action: "ToggleFullscreen"
