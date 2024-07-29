@@ -4,7 +4,7 @@ import = ["/home/rragni/.config/alacritty/catppuccin-mocha.toml"]
 background = "#1A1D23"
 
 [font]
-size = 18
+size = 14
 
 [font.bold]
 family = "DejaVuSansMono"
