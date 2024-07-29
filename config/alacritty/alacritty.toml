@@ -4,22 +4,22 @@ import = ["/home/rragni/.config/alacritty/catppuccin-mocha.toml"]
 background = "#1A1D23"
 
 [font]
-size = 16
+size = 15
 
 [font.bold]
-family = "DejaVuSansMono"
+family = "DejaVuSansM Nerd Font Mono"
 style = "Regular"
 
 [font.bold_italic]
-family = "DejaVuSansMono"
+family = "DejaVuSansM Nerd Font Mono"
 style = "Regular"
 
 [font.italic]
-family = "DejaVuSansMono"
+family = "DejaVuSansM Nerd Font Mono"
 style = "Regular"
 
 [font.normal]
-family = "DejaVuSansMono"
+family = "DejaVuSansM Nerd Font Mono"
 style = "Regular"
 
 [[keyboard.bindings]]
