@@ -176,6 +176,13 @@ require("lazy").setup({
     },
 
     {
+        'j-hui/fidget.nvim',
+        init = function ()
+            require('fidget').setup()
+        end
+    },
+
+    {
         "catppuccin/nvim",
         name = "catppuccin",
         priority = 1000,
