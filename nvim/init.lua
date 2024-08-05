@@ -158,6 +158,9 @@ require("lazy").setup({
 
     {
         'nvim-telescope/telescope.nvim',
+        dependencies = {
+            'nvim-telescope/telescope-ui-select.nvim'
+        },
         opts = {
             defaults = {
                 layout_strategy = 'vertical',
@@ -166,7 +169,10 @@ require("lazy").setup({
                     height = 0.9
                 },
             },
-        }
+        },
+        init = function()
+            require("telescope").load_extension("ui-select")
+        end
     },
 
     {
