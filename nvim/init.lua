@@ -15,8 +15,8 @@ vim.opt.termguicolors = true
 
 vim.g.mapleader = " "
 
-vim.keymap.set('n', '<leader>y', '"+y', { desc = "[y]ank to global clipboard" })
-vim.keymap.set('n', '<leader>Y', '"+Y', { desc = "[Y]ank to global clipboard" })
+vim.keymap.set('v', '<leader>y', '"+y', { desc = "[y]ank to global clipboard" })
+vim.keymap.set('v', '<leader>Y', '"+Y', { desc = "[Y]ank to global clipboard" })
 vim.keymap.set('v', 'y', 'ygv<esc>', { desc = "return cursor to position before yank" })
 vim.keymap.set('n', 'U', ':redo<cr>', { desc = "C-r is used for rename" })
 vim.keymap.set('v', 'J', ":m '>+1<CR>gv=gvzz", { desc = "move selection down and center screen" })
