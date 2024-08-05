@@ -81,8 +81,8 @@ vim.keymap.set('n', '<leader>ts', function() require('neotest').run.stop() end, 
 vim.keymap.set('n', '<leader>to', function() require('neotest').output.open({ enter = true }) end,
     { desc = '[t]est [o]utput' })
 vim.keymap.set('n', '<leader>tw', ':Trouble workspace_diagnostics<cr>', { desc = '[t]rouble [w]orkspace diagnostics' })
-vim.keymap.set('n', '<leader>tr', ':TroubleToggle<cr>', { desc = '[tr]rouble' })
-vim.keymap.set('n', '<leader>tx', ':TroubleToggle quickfix<cr>', { desc = '[t]rouble quick fi[x]' })
+vim.keymap.set('n', '<leader>tr', ':Trouble diagnostics toggle<cr>', { desc = '[tr]rouble' })
+vim.keymap.set('n', '<leader>tx', ':Trouble qflist toggle<cr>', { desc = '[t]rouble quick fi[x]' })
 vim.keymap.set('n', '<leader>tp', function() require('trouble').previous({ skip_groups = true, jump = true }) end,
     { desc = '[t]rouble [p]revious' })
 vim.keymap.set('n', '<leader>tn', function() require('trouble').next({ skip_groups = true, jump = true }) end,
@@ -214,41 +214,6 @@ require("lazy").setup({
                 enable = true,
                 max_lines = 12,
             }
-        end
-    },
-
-    {
-        'folke/noice.nvim',
-        dependencies = {
-            "MunifTanjim/nui.nvim",
-            "rcarriga/nvim-notify",
-        },
-        config = function()
-            require("notify").setup({
-                render = "minimal",
-                stages = "static",
-                top_down = true
-            })
-            require("noice").setup({
-                cmdline = {
-                    enabled = true,
-                    view = "cmdline",
-                },
-                lsp = {
-                    override = {
-                        ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
-                        ["vim.lsp.util.stylize_markdown"] = true,
-                        ["cmp.entry.get_documentation"] = true,
-                    },
-                },
-                presets = {
-                    bottom_search = true,
-                    command_palette = true,
-                    long_message_to_split = false,
-                    inc_rename = false,
-                    lsp_doc_border = false,
-                },
-            })
         end
     },
 
