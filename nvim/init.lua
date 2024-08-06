@@ -12,6 +12,7 @@ vim.opt.scrolloff = 100
 vim.opt.updatetime = 50
 vim.opt.colorcolumn = "120"
 vim.opt.termguicolors = true
+vim.opt.cmdheight = 0
 
 vim.g.mapleader = " "
 
