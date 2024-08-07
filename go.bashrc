@@ -1,6 +1,7 @@
 #!/bin/bash
 
 alias gmt='go mod tidy'
+alias gbb='go fmt && golangci-lint run -E gofmt,revive && go test -race -timeout 20s'
 export PATH=$PATH:$HOME/go/bin
 
 if [ ! -d "$HOME/.go" ]; then
