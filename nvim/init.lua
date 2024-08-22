@@ -170,6 +170,11 @@ require("lazy").setup({
                     height = 0.9
                 },
             },
+            pickers = {
+                find_files = {
+                    hidden = true,
+                },
+            },
         },
         init = function()
             require("telescope").load_extension("ui-select")
