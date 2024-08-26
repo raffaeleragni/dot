@@ -118,6 +118,8 @@ vim.keymap.set('n', '<leader><Right>', ':tabm +1<cr>')
 vim.keymap.set('n', '<leader><Left>', ':tabm -1<cr>')
 vim.keymap.set('n', '<leader><Up>', 'gT')
 vim.keymap.set('n', '<leader><Down>', 'gt')
+vim.keymap.set('n', '<leader>v', function() require("dapui").eval(nil, {enter=true}) end)
+vim.keymap.set('n', '<leader>c', ':tabnew<cr>:e $MYVIMRC<cr>')
 
 vim.diagnostic.config({
     virtual_text = {
@@ -451,7 +453,9 @@ require("lazy").setup({
     {
         "rcarriga/nvim-dap-ui",
         dependencies = {
-            "mfussenegger/nvim-dap"
+            "mfussenegger/nvim-dap",
+            "nvim-treesitter/nvim-treesitter",
+            "theHamsta/nvim-dap-virtual-text",
         },
         config = function()
             local dap, dapui = require("dap"), require("dapui")
@@ -468,6 +472,7 @@ require("lazy").setup({
             dap.listeners.before.event_exited.dapui_config = function()
                 dapui.close()
             end
+            require("nvim-dap-virtual-text").setup()
 
             dap.configurations.rust = {
                 {
