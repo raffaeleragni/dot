@@ -43,6 +43,7 @@ gcms() {
 
 gsync() {
   for i in `ls`; do
+    echo "-------- $i"
     cd $i && git checkout master && git pull
     cd -
   done
